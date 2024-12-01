@@ -254,6 +254,7 @@ document.getElementById('save-message').addEventListener('click', async () => {
 });
 
 
+
 // Carregar a mensagem padrão ao abrir o dashboard
 document.addEventListener('DOMContentLoaded', async () => {
     try {
