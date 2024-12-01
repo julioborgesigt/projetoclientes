@@ -74,3 +74,9 @@ router.put('/mark-paid/:id', (req, res) => {
 });
 
 
+router.get('/list', (req, res) => {
+    db.query('SELECT * FROM clientes ORDER BY vencimento ASC', (err, results) => {
+        if (err) return res.status(500).json({ error: 'Erro ao listar clientes' });
+        res.json(results); // Retorna os clientes com todos os campos, incluindo o status
+    });
+});

@@ -75,3 +75,26 @@ button:hover {
 #sort-clients:hover {
     background-color: #0056b3;
 }
+
+/* Estilos para o status do cliente */
+.status {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Status Pendente (vermelho) */
+.status-pendente {
+    background-color: #ffcccc;
+    color: #d00000;
+    border: 1px solid #d00000;
+}
+
+/* Status Cobrança Feita (laranja) */
+.status-cobrança-feita {
+    background-color: #ffe4b5;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
+}

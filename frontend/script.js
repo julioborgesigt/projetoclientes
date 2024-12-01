@@ -9,12 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
         clients.forEach(client => {
             const clientItem = document.createElement('div');
             clientItem.classList.add('client-item');
+    
+            // Define uma classe CSS com base no status
+            const statusClass = client.status === 'pendente' ? 'status-pendente' : 
+                                client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
+    
             clientItem.innerHTML = `
                 <p><strong>Nome:</strong> ${client.name}</p>
                 <p><strong>Vencimento:</strong> ${client.vencimento}</p>
                 <p><strong>Serviço:</strong> ${client.servico}</p>
                 <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
                 <p><strong>Observações:</strong> ${client.observacoes}</p>
+                <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
                 <button onclick="deleteClient(${client.id})">Excluir</button>
                 <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
                 <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
@@ -22,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
 
