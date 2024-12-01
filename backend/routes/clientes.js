@@ -38,7 +38,7 @@ router.post('/send-message', (req, res) => {
 
     client.messages
         .create({
-            from: 'whatsapp:+14155238886', // Número do Twilio
+            from: 'whatsapp:+5588988416813', // Número do Twilio
             to: `whatsapp:${whatsapp}`,
             body: message,
         })
