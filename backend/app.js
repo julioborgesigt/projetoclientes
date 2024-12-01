@@ -6,14 +6,24 @@ const path = require('path'); // Importação do módulo path
 
 dotenv.config();
 
-const authRoutes = require('./routes/auth');
+
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/auth', authRoutes);
 
+
+const authRoutes = require('./routes/auth');
+  // Rotas
+  app.use('/auth', authRoutes);
+
+
+
+  const clientesRoutes = require('./routes/clientes');
+  app.use('/clientes', clientesRoutes);
+
+ 
 
 
 // Configura o uso de arquivos estáticos (CSS, JS, etc.) a partir da pasta frontend
