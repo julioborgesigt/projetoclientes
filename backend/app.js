@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
 
-app.use(express.json()); // Para processar JSON no corpo das requisições
+//app.use(express.json()); // Para processar JSON no corpo das requisições
 app.use('/clientes', clientesRoutes); // Define o prefixo "/clientes" para as rotas do arquivo clientes.js
 
 
