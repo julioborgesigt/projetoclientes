@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
 
+
 // Configura o uso de arquivos estáticos (CSS, JS, etc.) a partir da pasta frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
 
