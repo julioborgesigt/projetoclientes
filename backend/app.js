@@ -22,6 +22,11 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend', 'index.html')); // Caminho para o index.html
 });
+
+// Rota para a página principal
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'dashboard.html')); // Caminho para o dashboard.html
+  });
   
 
 const PORT = process.env.PORT || 3000;
