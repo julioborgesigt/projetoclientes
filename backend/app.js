@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
 
-// Configuração das rotas
+// Rota para a página principal
 app.get('/', (req, res) => {
-    res.send('Página de Boas-Vindas'); // Ou qualquer outra página que você deseja mostrar
+    res.sendFile(path.join(__dirname, 'public', 'index.html')); // Supondo que você tenha um index.html na pasta public
   });
   
 
