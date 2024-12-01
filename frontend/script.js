@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para buscar a lista de clientes
     async function getClients() {
         try {
-            const response = await fetch('http://localhost:3000/clientes/list');
+            const response = await fetch('/clientes/list');
             const data = await response.json();
             displayClients(data);
         } catch (error) {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const client = { name, vencimento, servico, whatsapp, observacoes };
 
         try {
-            const response = await fetch('http://localhost:3000/clientes/add', {
+            const response = await fetch('/clientes/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(client)
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ordenar clientes por vencimento
     sortClientsButton.addEventListener('click', async function () {
         try {
-            const response = await fetch('http://localhost:3000/clientes/list');
+            const response = await fetch('/clientes/list');
             const data = await response.json();
             data.sort((a, b) => new Date(a.vencimento) - new Date(b.vencimento));
             displayClients(data);
