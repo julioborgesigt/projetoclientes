@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const clientsList = document.getElementById('clients-list');
     const sortClientsButton = document.getElementById('sort-clients');
 
-    // Função para exibir os clientes na lista
     function displayClients(clients) {
         clientsList.innerHTML = '';
         clients.forEach(client => {
@@ -16,10 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Serviço:</strong> ${client.servico}</p>
                 <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
                 <p><strong>Observações:</strong> ${client.observacoes}</p>
+                <button onclick="deleteClient(${client.id})">Excluir</button>
+                <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
             `;
             clientsList.appendChild(clientItem);
         });
     }
+    
 
     // Função para buscar a lista de clientes
     async function getClients() {
