@@ -29,9 +29,7 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'dashboard.html')); // Caminho para o dashboard.html
   });
 
-  // Rotas
-app.use('/auth', authRoutes);
-app.use('/clientes', clientesRoutes);
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
