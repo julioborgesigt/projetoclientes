@@ -90,7 +90,6 @@ router.post('/save-message', (req, res) => {
         return res.status(400).json({ error: 'A mensagem não pode estar vazia.' });
     }
 
-    // Exemplo: Salvar no banco de dados (uma tabela chamada 'config' pode ser usada)
     db.query(
         'UPDATE config SET whatsapp_message = ? WHERE id = 1',
         [message],
@@ -103,6 +102,7 @@ router.post('/save-message', (req, res) => {
         }
     );
 });
+
 
 
 // Rota para buscar a mensagem padrão

@@ -224,9 +224,11 @@ async function markAsPaid(id) {
     }
 }
 
-
 // Salvar mensagem padrão no backend
-document.getElementById('save-message').addEventListener('click', async () => {
+// Evento para salvar mensagem
+document.getElementById('save-message').addEventListener('click', async (e) => {
+    e.preventDefault(); // Impede que o botão recarregue a página
+
     const message = document.getElementById('default-message').value;
 
     if (!message.trim()) {
@@ -246,12 +248,13 @@ document.getElementById('save-message').addEventListener('click', async () => {
         }
 
         const data = await response.json();
-        alert(data.message); // Exibe uma mensagem de sucesso
+        alert(data.message); // Mensagem de sucesso
     } catch (error) {
         console.error('Erro ao salvar mensagem:', error);
         alert('Erro ao salvar mensagem.');
     }
 });
+
 
 
 
