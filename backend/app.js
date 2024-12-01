@@ -13,6 +13,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
+
+// Configuração das rotas
+app.get('/', (req, res) => {
+    res.send('Página de Boas-Vindas'); // Ou qualquer outra página que você deseja mostrar
+  });
+  
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
