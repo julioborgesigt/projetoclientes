@@ -113,3 +113,56 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         alert(data.error);
     }
 });
+
+
+async function checkAlerts() {
+    try {
+        const response = await fetch('/clientes/alerts');
+        const data = await response.json();
+
+        if (data.length > 0) {
+            alert(`Existem ${data.length} clientes com vencimento próximo!`);
+        }
+    } catch (error) {
+        console.error('Erro ao buscar alertas:', error);
+    }
+}
+
+// Verificar alertas ao carregar o dashboard
+document.addEventListener('DOMContentLoaded', checkAlerts);
+
+
+async function sendMessage(whatsapp, message) {
+    try {
+        const response = await fetch('/clientes/send-message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ whatsapp, message }),
+        });
+
+        const data = await response.json();
+        alert(data.message);
+    } catch (error) {
+        alert('Erro ao enviar mensagem:', error);
+    }
+}
+
+
+function displayClients(clients) {
+    clientsList.innerHTML = '';
+    clients.forEach(client => {
+        const clientItem = document.createElement('div');
+        clientItem.classList.add('client-item');
+        clientItem.innerHTML = `
+            <p><strong>Nome:</strong> ${client.name}</p>
+            <p><strong>Vencimento:</strong> ${client.vencimento}</p>
+            <p><strong>Serviço:</strong> ${client.servico}</p>
+            <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
+            <p><strong>Observações:</strong> ${client.observacoes}</p>
+            <button onclick="deleteClient(${client.id})">Excluir</button>
+            <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+            <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+        `;
+        clientsList.appendChild(clientItem);
+    });
+}

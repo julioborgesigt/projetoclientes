@@ -54,3 +54,20 @@ router.post('/login', (req, res) => {
 });
 
 module.exports = router;
+
+
+// Rota para buscar clientes com vencimento próximo
+router.get('/alerts', (req, res) => {
+    const today = new Date();
+    const threeDaysLater = new Date(today);
+    threeDaysLater.setDate(today.getDate() + 3);
+
+    db.query(
+        'SELECT * FROM clientes WHERE vencimento BETWEEN ? AND ?',
+        [today.toISOString().slice(0, 10), threeDaysLater.toISOString().slice(0, 10)],
+        (err, results) => {
+            if (err) return res.status(500).json({ error: 'Erro ao buscar alertas' });
+            res.status(200).json(results);
+        }
+    );
+});
