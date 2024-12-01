@@ -1,22 +1,3 @@
-
-
-
-document.getElementById('login-btn').addEventListener('click', function() {
-    document.getElementById('login-form').style.display = 'block';
-    document.getElementById('register-form').style.display = 'none';
-    this.classList.add('active');
-    document.getElementById('register-btn').classList.remove('active');
-});
-
-document.getElementById('register-btn').addEventListener('click', function() {
-    document.getElementById('register-form').style.display = 'block';
-    document.getElementById('login-form').style.display = 'none';
-    this.classList.add('active');
-    document.getElementById('login-btn').classList.remove('active');
-});
-
-
-
 document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -49,7 +30,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const data = await response.json();
     if (response.ok) {
         alert(data.message);
-        window.location.href = '/dashboard.html';
+        window.location.href = '/welcome.html';
     } else {
         alert(data.error);
     }
