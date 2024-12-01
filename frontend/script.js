@@ -5,7 +5,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
 
-    const response = await fetch('routes/auth/register', {
+    const response = await fetch('backend/routes/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
@@ -21,7 +21,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
 
-    const response = await fetch('routes/auth/login', {
+    const response = await fetch('backend/routes/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
