@@ -223,3 +223,47 @@ async function markAsPaid(id) {
         alert('Erro ao marcar como cobrança feita.');
     }
 }
+
+
+// Salvar mensagem padrão no backend
+document.getElementById('save-message').addEventListener('click', async () => {
+    const message = document.getElementById('default-message').value;
+
+    if (!message.trim()) {
+        alert('A mensagem padrão não pode estar vazia.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/clientes/save-message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao salvar mensagem padrão.');
+        }
+
+        const data = await response.json();
+        alert(data.message); // Exibe uma mensagem de sucesso
+    } catch (error) {
+        console.error('Erro ao salvar mensagem:', error);
+        alert('Erro ao salvar mensagem.');
+    }
+});
+
+
+// Carregar a mensagem padrão ao abrir o dashboard
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('/clientes/get-message');
+        const data = await response.json();
+
+        if (data.message) {
+            document.getElementById('default-message').value = data.message;
+        }
+    } catch (error) {
+        console.error('Erro ao carregar mensagem padrão:', error);
+    }
+});

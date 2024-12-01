@@ -80,3 +80,38 @@ router.get('/list', (req, res) => {
         res.json(results); // Retorna os clientes com todos os campos, incluindo o status
     });
 });
+
+
+// Salvar mensagem padrão no banco de dados
+router.post('/save-message', (req, res) => {
+    const { message } = req.body;
+
+    if (!message || message.trim() === '') {
+        return res.status(400).json({ error: 'A mensagem não pode estar vazia.' });
+    }
+
+    // Exemplo: Salvar no banco de dados (uma tabela chamada 'config' pode ser usada)
+    db.query(
+        'UPDATE config SET whatsapp_message = ? WHERE id = 1',
+        [message],
+        (err) => {
+            if (err) {
+                console.error('Erro ao salvar mensagem padrão:', err);
+                return res.status(500).json({ error: 'Erro ao salvar mensagem padrão.' });
+            }
+            res.status(200).json({ message: 'Mensagem padrão salva com sucesso!' });
+        }
+    );
+});
+
+
+// Rota para buscar a mensagem padrão
+router.get('/get-message', (req, res) => {
+    db.query('SELECT whatsapp_message FROM config WHERE id = 1', (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar mensagem padrão:', err);
+            return res.status(500).json({ error: 'Erro ao buscar mensagem padrão.' });
+        }
+        res.status(200).json({ message: results[0]?.whatsapp_message || '' });
+    });
+});
