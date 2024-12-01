@@ -16,7 +16,7 @@ app.use('/auth', authRoutes);
 
 // Rota para a página principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', './frontend/index.html')); // Supondo que você tenha um index.html na pasta public
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html')); // Supondo que você tenha um index.html na pasta public
   });
   
 
