@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path'); // Importação do módulo path
+const clientesRoutes = require('./routes/clientes');
+
 
 dotenv.config();
 
@@ -13,6 +15,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
+
+
+app.use(express.json()); // Para processar JSON no corpo das requisições
+app.use('/clientes', clientesRoutes); // Define o prefixo "/clientes" para as rotas do arquivo clientes.js
+
 
 
 
