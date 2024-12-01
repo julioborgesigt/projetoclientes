@@ -49,8 +49,7 @@ router.post('/send-message', (req, res) => {
 
 router.delete('/delete/:id', (req, res) => {
     const { id } = req.params;
-
-    db.query('DELETE FROM clientes WHERE id = ?', [id], (err, results) => {
+    db.query('DELETE FROM clientes WHERE id = ?', [id], (err) => {
         if (err) return res.status(500).json({ error: 'Erro ao excluir cliente' });
         res.status(200).json({ message: 'Cliente excluído com sucesso!' });
     });
@@ -59,9 +58,19 @@ router.delete('/delete/:id', (req, res) => {
 
 router.put('/mark-pending/:id', (req, res) => {
     const { id } = req.params;
-
     db.query('UPDATE clientes SET status = "pendente" WHERE id = ?', [id], (err) => {
         if (err) return res.status(500).json({ error: 'Erro ao atualizar status' });
         res.status(200).json({ message: 'Cliente marcado como pagamento pendente' });
     });
 });
+
+
+router.put('/mark-paid/:id', (req, res) => {
+    const { id } = req.params;
+    db.query('UPDATE clientes SET status = "cobrança feita" WHERE id = ?', [id], (err) => {
+        if (err) return res.status(500).json({ error: 'Erro ao atualizar status' });
+        res.status(200).json({ message: 'Cliente marcado como cobrança feita' });
+    });
+});
+
+

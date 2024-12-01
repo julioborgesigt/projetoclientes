@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
+    
 
     // Função para buscar a lista de clientes
     async function getClients() {
@@ -168,4 +169,50 @@ function displayClients(clients) {
         `;
         clientsList.appendChild(clientItem);
     });
+}
+
+
+// Função para excluir um cliente
+async function deleteClient(id) {
+    try {
+        const response = await fetch(`/clientes/delete/${id}`, {
+            method: 'DELETE',
+        });
+        const data = await response.json();
+        alert(data.message);
+        getClients(); // Atualiza a lista de clientes
+    } catch (error) {
+        console.error('Erro ao excluir cliente:', error);
+        alert('Erro ao excluir cliente.');
+    }
+}
+
+// Função para marcar cliente como "Pagamento Pendente"
+async function markAsPending(id) {
+    try {
+        const response = await fetch(`/clientes/mark-pending/${id}`, {
+            method: 'PUT',
+        });
+        const data = await response.json();
+        alert(data.message);
+        getClients(); // Atualiza a lista de clientes
+    } catch (error) {
+        console.error('Erro ao atualizar status:', error);
+        alert('Erro ao marcar como pagamento pendente.');
+    }
+}
+
+// Função para marcar cliente como "Cobrança Feita"
+async function markAsPaid(id) {
+    try {
+        const response = await fetch(`/clientes/mark-paid/${id}`, {
+            method: 'PUT',
+        });
+        const data = await response.json();
+        alert(data.message);
+        getClients(); // Atualiza a lista de clientes
+    } catch (error) {
+        console.error('Erro ao atualizar status:', error);
+        alert('Erro ao marcar como cobrança feita.');
+    }
 }
