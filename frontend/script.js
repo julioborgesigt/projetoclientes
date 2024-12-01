@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(data.message);
             getClients(); // Atualiza a lista de clientes
         } catch (error) {
-            console.error('Erro ao adicionar cliente:', error);
+            alert('Erro ao adicionar cliente:', error);
         }
     });
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
             data.sort((a, b) => new Date(a.vencimento) - new Date(b.vencimento));
             displayClients(data);
         } catch (error) {
-            console.error('Erro ao ordenar clientes:', error);
+            alert('Erro ao ordenar clientes:', error);
         }
     });
 
