@@ -83,10 +83,15 @@ router.get('/list', (req, res) => {
 
 
 // Salvar mensagem padrão no banco de dados
+// Salvar mensagem padrão no banco de dados
 router.post('/save-message', (req, res) => {
     const { message } = req.body;
 
+    // Verifica se a mensagem foi recebida
+    console.log('Mensagem recebida no servidor:', message);
+
     if (!message || message.trim() === '') {
+        console.log('Mensagem vazia ou inválida.');
         return res.status(400).json({ error: 'A mensagem não pode estar vazia.' });
     }
 
@@ -95,13 +100,15 @@ router.post('/save-message', (req, res) => {
         [message],
         (err) => {
             if (err) {
-                console.error('Erro ao salvar mensagem padrão:', err);
+                console.error('Erro ao salvar mensagem padrão no banco:', err);
                 return res.status(500).json({ error: 'Erro ao salvar mensagem padrão.' });
             }
+            console.log('Mensagem padrão salva no banco de dados com sucesso!');
             res.status(200).json({ message: 'Mensagem padrão salva com sucesso!' });
         }
     );
 });
+
 
 
 
