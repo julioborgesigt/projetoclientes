@@ -7,17 +7,6 @@ const path = require('path'); // Importação do módulo path
 dotenv.config();
 
 const authRoutes = require('./routes/auth');
-  // Rotas
-  app.use('/auth', authRoutes);
-
-
-
-  const clientesRoutes = require('./routes/clientes');
-  app.use('/clientes', clientesRoutes);
-
- 
-
-
 
 const app = express();
 
@@ -39,8 +28,7 @@ app.get('/', (req, res) => {
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend', 'dashboard.html')); // Caminho para o dashboard.html
   });
-
-
+  
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
