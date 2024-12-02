@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortClientsButton = document.getElementById('sort-clients');
 
     function displayClients(clients) {
-        clientsList.innerHTML = '';
+        clientsList.innerHTML = ''; // Limpa a lista de clientes antes de renderizar
+    
         clients.forEach(client => {
             const clientItem = document.createElement('div');
             clientItem.classList.add('client-item');
     
-            // Define uma classe CSS com base no status
-            const statusClass = client.status === 'pendente' ? 'status-pendente' : 
+            // Define a classe CSS com base no status
+            const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
     
             clientItem.innerHTML = `
@@ -24,10 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button onclick="deleteClient(${client.id})">Excluir</button>
                 <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
                 <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                
             `;
-            clientsList.appendChild(clientItem);
+            
+            clientsList.appendChild(clientItem); // Adiciona o cliente à lista
         });
     }
+    
     
     
     
