@@ -273,6 +273,7 @@ function displayClients(clients) {
 }
 
 
+
 async function sendWhatsAppMessage(whatsappNumber) {
     try {
         // Obter a mensagem padrão do backend
