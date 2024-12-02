@@ -303,7 +303,7 @@ async function sendMessage(whatsapp, message) {
     }
 }
 
-/*
+
 function displayClients(clients) {
     clientsList.innerHTML = '';
     clients.forEach(client => {
@@ -332,7 +332,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
-*/
+
 
 
 // Função para excluir um cliente
