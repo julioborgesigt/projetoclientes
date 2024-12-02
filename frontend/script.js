@@ -1,3 +1,4 @@
+/*
 // Interações com os formulários de login e cadastro, bem como a lista de clientes
 document.addEventListener('DOMContentLoaded', function () {
     const addClientForm = document.getElementById('add-client-form');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    
+    */
     
     
 async function sendWhatsAppMessage(whatsappNumber) {
