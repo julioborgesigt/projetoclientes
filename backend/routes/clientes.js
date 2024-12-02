@@ -117,6 +117,7 @@ router.post('/save-message', (req, res) => {
 
 
 
+
 // Rota para buscar a mensagem padrão
 router.get('/get-message', (req, res) => {
     db.query('SELECT whatsapp_message FROM config WHERE id = 1', (err, results) => {
