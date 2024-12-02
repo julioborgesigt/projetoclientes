@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortClientsButton = document.getElementById('sort-clients');
 
     function displayClients(clients) {
-        clientsList.innerHTML = ''; // Limpa a lista de clientes antes de renderizar
+        clientsList.innerHTML = ''; // Limpa a lista de clientes
     
         clients.forEach(client => {
             const clientItem = document.createElement('div');
             clientItem.classList.add('client-item');
     
-            // Define a classe CSS com base no status
+            // Define uma classe CSS com base no status
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
     
@@ -23,14 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
                 <p><strong>Observações:</strong> ${client.observacoes}</p>
                 <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-                <button onclick="deleteClient(${client.id})">Excluir</button>
-                <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-                <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                 <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
-                
             `;
-            
-            clientsList.appendChild(clientItem); // Adiciona o cliente à lista
+            clientsList.appendChild(clientItem);
         });
     }
     
@@ -248,13 +246,14 @@ async function sendMessage(whatsapp, message) {
 
 
 function displayClients(clients) {
-    clientsList.innerHTML = '';
+    clientsList.innerHTML = ''; // Limpa a lista de clientes
+
     clients.forEach(client => {
         const clientItem = document.createElement('div');
         clientItem.classList.add('client-item');
 
         // Define uma classe CSS com base no status
-        const statusClass = client.status === 'pendente' ? 'status-pendente' : 
+        const statusClass = client.status === 'pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
 
         clientItem.innerHTML = `
@@ -264,17 +263,15 @@ function displayClients(clients) {
             <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
             <p><strong>Observações:</strong> ${client.observacoes}</p>
             <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-            <button onclick="deleteClient(${client.id})">Excluir</button>
-            <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-            <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-            <button onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+            <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+            <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+            <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
             <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
-
-            
         `;
         clientsList.appendChild(clientItem);
     });
 }
+
 
 async function sendWhatsAppMessage(whatsappNumber) {
     try {
