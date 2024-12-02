@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form input,
+form textarea,
+form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#clients-list {
+    margin-top: 20px;
+}
+
+.client-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.client-item:last-child {
+    border-bottom: none;
+}
+
+#sort-clients {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#sort-clients:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para o status do cliente */
+.status {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Status Pendente (vermelho) */
+.status-pendente {
+    background-color: #ffcccc;
+    color: #d00000;
+    border: 1px solid #d00000;
+}
+
+/* Status Cobrança Feita (laranja) */
+.status-cobrança-feita {
+    background-color: #ffe4b5;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
+}
