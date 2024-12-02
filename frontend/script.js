@@ -1,8 +1,8 @@
-
+const clientsList = document.getElementById('clients-list');
 // Interações com os formulários de login e cadastro, bem como a lista de clientes
 document.addEventListener('DOMContentLoaded', function () {
     const addClientForm = document.getElementById('add-client-form');
-    const clientsList = document.getElementById('clients-list');
+    
     const sortClientsButton = document.getElementById('sort-clients');
 
     function displayClients(clients) {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
 
-
+    
     // Função para buscar a lista de clientes
     async function getClients() {
         try {
