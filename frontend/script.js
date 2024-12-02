@@ -291,6 +291,7 @@ async function markAsPaid(id) {
 // Salvar mensagem padrão no backend
 // Evento para salvar mensagem
 // Evento para salvar mensagem
+/*
 document.getElementById('save-message').addEventListener('click', async (e) => {
     e.preventDefault(); // Impede o comportamento padrão do botão (evitar reload da página)
     
@@ -329,7 +330,7 @@ document.getElementById('save-message').addEventListener('click', async (e) => {
     }
 });
 
-
+*/
 
 
 
