@@ -87,33 +87,27 @@ router.get('/list', (req, res) => {
 router.post('/save-message', (req, res) => {
     const { message } = req.body;
 
-    // Verifica se a mensagem foi enviada
+    // Verifica se a mensagem foi recebida
+    console.log('Mensagem recebida no servidor:', message);
+
     if (!message || message.trim() === '') {
+        console.log('Mensagem vazia ou inválida.');
         return res.status(400).json({ error: 'A mensagem não pode estar vazia.' });
     }
 
-    // Atualiza a mensagem no banco de dados
     db.query(
         'UPDATE config SET whatsapp_message = ? WHERE id = 1',
         [message],
-        (err, results) => {
+        (err) => {
             if (err) {
                 console.error('Erro ao salvar mensagem padrão no banco:', err);
                 return res.status(500).json({ error: 'Erro ao salvar mensagem padrão.' });
             }
-
-            // Verifica se a atualização realmente afetou uma linha
-            if (results.affectedRows === 0) {
-                return res.status(400).json({ error: 'Nenhum registro foi atualizado.' });
-            }
-
-            console.log('Mensagem padrão salva no banco de dados:', message);
+            console.log('Mensagem padrão salva no banco de dados com sucesso!');
             res.status(200).json({ message: 'Mensagem padrão salva com sucesso!' });
         }
     );
 });
-
-
 
 
 
