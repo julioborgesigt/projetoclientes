@@ -285,6 +285,7 @@ function displayClients(clients) {
             <button onclick="deleteClient(${client.id})">Excluir</button>
             <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
             <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+            <button onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
             <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
 
             
