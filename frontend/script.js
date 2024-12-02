@@ -83,8 +83,72 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Carregar a lista de clientes ao carregar a página
     getClients();
+
+
+    
+
+
 });
 
+
+
+
+
+    // Carregar a mensagem padrão ao abrir o dashboard
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('/clientes/get-message');
+            const data = await response.json();
+
+            if (data.message) {
+                document.getElementById('default-message').value = data.message;
+            }
+        } catch (error) {
+            console.error('Erro ao carregar mensagem padrão:', error);
+        }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const saveButton = document.getElementById('save-message');
+        const messageInput = document.getElementById('default-message');
+    
+        if (!saveButton || !messageInput) {
+            alert('Botão ou campo de mensagem não encontrado!');
+            return;
+        }
+    
+        saveButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            alert('Botão Salvar Mensagem clicado!'); // Verificação básica
+    
+            const message = messageInput.value;
+    
+            if (!message.trim()) {
+                alert('A mensagem padrão não pode estar vazia.');
+                return;
+            }
+    
+            try {
+                const response = await fetch('/clientes/save-message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message }),
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Erro ao salvar mensagem padrão.');
+                }
+    
+                const data = await response.json();
+                alert('Mensagem salva com sucesso: ' + data.message);
+            } catch (error) {
+                console.error('Erro ao salvar mensagem:', error);
+                alert('Erro ao salvar mensagem.');
+            }
+        });
+    });
+    
 
 
 document.getElementById('register-form').addEventListener('submit', async (e) => {
@@ -269,16 +333,4 @@ document.getElementById('save-message').addEventListener('click', async (e) => {
 
 
 
-// Carregar a mensagem padrão ao abrir o dashboard
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const response = await fetch('/clientes/get-message');
-        const data = await response.json();
 
-        if (data.message) {
-            document.getElementById('default-message').value = data.message;
-        }
-    } catch (error) {
-        console.error('Erro ao carregar mensagem padrão:', error);
-    }
-});
