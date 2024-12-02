@@ -99,6 +99,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+    // Função para buscar a lista de clientes
+    async function getClients() {
+        try {
+            const response = await fetch('/clientes/list');
+            const data = await response.json();
+            displayClients(data);
+        } catch (error) {
+            console.error('Erro ao buscar clientes:', error);
+        }
+    }
+
+
+
 
 
     // Carregar a mensagem padrão ao abrir o dashboard
