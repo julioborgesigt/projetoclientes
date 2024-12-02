@@ -2,8 +2,5 @@ USE zjbjbi_banco;
 
 
 
-CREATE TABLE config (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    whatsapp_message TEXT
-);
 
+INSERT INTO config (id, whatsapp_message) VALUES (1, NULL); -- Adiciona um registro inicial
