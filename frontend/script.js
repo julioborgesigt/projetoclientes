@@ -270,19 +270,29 @@ function displayClients(clients) {
     clients.forEach(client => {
         const clientItem = document.createElement('div');
         clientItem.classList.add('client-item');
+
+        // Define uma classe CSS com base no status
+        const statusClass = client.status === 'pendente' ? 'status-pendente' : 
+                            client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
+
         clientItem.innerHTML = `
             <p><strong>Nome:</strong> ${client.name}</p>
             <p><strong>Vencimento:</strong> ${client.vencimento}</p>
             <p><strong>Serviço:</strong> ${client.servico}</p>
             <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
             <p><strong>Observações:</strong> ${client.observacoes}</p>
+            <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
             <button onclick="deleteClient(${client.id})">Excluir</button>
             <button onclick="markAsPending(${client.id})">Pagamento Pendente</button>
             <button onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+            <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+
+            
         `;
         clientsList.appendChild(clientItem);
     });
 }
+
 
 
 // Função para excluir um cliente
@@ -373,6 +383,37 @@ document.getElementById('save-message').addEventListener('click', async (e) => {
 });
 
 */
+
+
+async function sendWhatsAppMessage(whatsappNumber) {
+    try {
+        // Obter a mensagem padrão do backend
+        const response = await fetch('/clientes/get-message');
+        const data = await response.json();
+        const message = data.message;
+
+        if (!message || message.trim() === '') {
+            alert('Nenhuma mensagem padrão foi configurada.');
+            return;
+        }
+
+        // Codificar a mensagem para URL
+        const encodedMessage = encodeURIComponent(message);
+
+        // Formatar o número do WhatsApp (removendo espaços e caracteres inválidos)
+        const formattedNumber = whatsappNumber.replace(/\D/g, '');
+
+        // Construir o link do WhatsApp
+        const whatsappLink = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
+
+        // Abrir o link do WhatsApp em uma nova guia
+        window.open(whatsappLink, '_blank');
+    } catch (error) {
+        console.error('Erro ao obter a mensagem padrão:', error);
+        alert('Erro ao obter a mensagem padrão.');
+    }
+}
+
 
 
 

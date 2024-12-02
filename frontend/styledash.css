@@ -98,3 +98,22 @@ button:hover {
     color: #ff8c00;
     border: 1px solid #ff8c00;
 }
+
+
+button {
+    margin-right: 5px;
+}
+
+/* Botão de WhatsApp */
+button.whatsapp {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.whatsapp:hover {
+    background-color: #1da851;
+}

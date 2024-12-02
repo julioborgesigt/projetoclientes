@@ -122,3 +122,6 @@ router.get('/get-message', (req, res) => {
         res.status(200).json({ message: results[0]?.whatsapp_message || '' });
     });
 });
+
+
+
