@@ -1,4 +1,48 @@
-/*
+async function sendWhatsAppMessage(whatsappNumber) {
+    try {
+        // Obter a mensagem padrão do backend
+        const response = await fetch('/clientes/get-message');
+        const data = await response.json();
+        const message = data.message;
+
+        if (!message || message.trim() === '') {
+            alert('Nenhuma mensagem padrão foi configurada.');
+            return;
+        }
+
+        // Codificar a mensagem para URL
+        const encodedMessage = encodeURIComponent(message);
+
+        // Formatar o número do WhatsApp (removendo espaços e caracteres inválidos)
+        const formattedNumber = whatsappNumber.replace(/\D/g, '');
+
+        // Construir o link do WhatsApp
+        const whatsappLink = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
+
+        // Abrir o link do WhatsApp em uma nova guia
+        window.open(whatsappLink, '_blank');
+    } catch (error) {
+        console.error('Erro ao obter a mensagem padrão:', error);
+        alert('Erro ao obter a mensagem padrão.');
+    }
+}
+
+
+
+
+
+    // Função para buscar a lista de clientes
+    async function getClients() {
+        try {
+            const response = await fetch('/clientes/list');
+            const data = await response.json();
+            displayClients(data);
+        } catch (error) {
+            console.error('Erro ao buscar clientes:', error);
+        }
+    }
+
+
 // Interações com os formulários de login e cadastro, bem como a lista de clientes
 document.addEventListener('DOMContentLoaded', function () {
     const addClientForm = document.getElementById('add-client-form');
@@ -34,49 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    */
     
     
-async function sendWhatsAppMessage(whatsappNumber) {
-    try {
-        // Obter a mensagem padrão do backend
-        const response = await fetch('/clientes/get-message');
-        const data = await response.json();
-        const message = data.message;
 
-        if (!message || message.trim() === '') {
-            alert('Nenhuma mensagem padrão foi configurada.');
-            return;
-        }
-
-        // Codificar a mensagem para URL
-        const encodedMessage = encodeURIComponent(message);
-
-        // Formatar o número do WhatsApp (removendo espaços e caracteres inválidos)
-        const formattedNumber = whatsappNumber.replace(/\D/g, '');
-
-        // Construir o link do WhatsApp
-        const whatsappLink = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
-
-        // Abrir o link do WhatsApp em uma nova guia
-        window.open(whatsappLink, '_blank');
-    } catch (error) {
-        console.error('Erro ao obter a mensagem padrão:', error);
-        alert('Erro ao obter a mensagem padrão.');
-    }
-}
-
-
-    // Função para buscar a lista de clientes
-    async function getClients() {
-        try {
-            const response = await fetch('/clientes/list');
-            const data = await response.json();
-            displayClients(data);
-        } catch (error) {
-            console.error('Erro ao buscar clientes:', error);
-        }
-    }
 
     // Enviar novo cliente
     addClientForm.addEventListener('submit', async function (e) {
@@ -299,7 +303,7 @@ async function sendMessage(whatsapp, message) {
     }
 }
 
-
+/*
 function displayClients(clients) {
     clientsList.innerHTML = '';
     clients.forEach(client => {
@@ -328,7 +332,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
-
+*/
 
 
 // Função para excluir um cliente
