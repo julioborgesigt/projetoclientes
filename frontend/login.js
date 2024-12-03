@@ -25,6 +25,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     }
 });
 
+
 // Evento de login
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Impede o comportamento padrão do formulário
