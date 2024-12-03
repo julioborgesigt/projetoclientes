@@ -396,9 +396,13 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
             return;
         }
 
-        // Verifique se o vencimento é uma data válida
+        console.log('Vencimento recebido:', vencimento); // Adiciona um log para verificar o valor da data
+
+        // Tenta criar a data a partir da string de vencimento
         const vencimentoDate = new Date(vencimento);
-        
+
+        console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
+
         // Verifica se a data é válida
         if (isNaN(vencimentoDate)) {
             alert('Data inválida.');
@@ -419,6 +423,7 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
         alert('Erro ao enviar mensagem pelo WhatsApp.');
     }
 }
+
 
 
 
