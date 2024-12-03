@@ -1,15 +1,22 @@
-document.querySelectorAll('.toggle-form').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const target = toggle.dataset.target; // Identifica o container alvo
-        const container = document.querySelector('.auth-container');
+document.addEventListener('DOMContentLoaded', () => {
+    // Alternância entre login e cadastro
+    document.querySelectorAll('.toggle-form').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const target = toggle.dataset.target; // Identifica o container alvo
+            const container = document.querySelector('.auth-container');
 
-        if (target === 'register') {
-            container.classList.add('active');
-        } else if (target === 'login') {
-            container.classList.remove('active');
-        }
+            if (target === 'register') {
+                container.classList.add('active');
+            } else if (target === 'login') {
+                container.classList.remove('active');
+            }
+        });
     });
+
+    // Verifique se o evento está funcionando
+    console.log('Scripts carregados e DOM pronto.');
 });
+
 
 // Eventos de login e registro já existentes
 
