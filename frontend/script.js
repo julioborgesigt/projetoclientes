@@ -387,6 +387,8 @@ async function adjustDate(clientId, days) {
 
 async function sendWhatsAppMessage(whatsapp, vencimento) {
     try {
+        alert('Data de vencimento recebida:', vencimento); // Log para verificar a variável vencimento
+
         // Busca a mensagem padrão do backend
         const response = await fetch('/clientes/get-message');
         const data = await response.json();
@@ -396,12 +398,16 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
             return;
         }
 
-        alert('Vencimento recebido:', vencimento); // Adiciona um log para verificar o valor da data
+        // Verifica se a data de vencimento foi passada corretamente
+        if (!vencimento) {
+            console.log('Vencimento está vazio.');
+            alert('Data de vencimento não disponível.');
+            return;
+        }
 
         // Concatena a hora para garantir que o JavaScript interprete corretamente a data
-        const vencimentoDate = new Date(vencimento + 'T00:00:00.000Z'); 
-
-        alert('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
+        const vencimentoDate = new Date(vencimento + 'T00:00:00.000Z');
+        console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
 
         // Verifica se a data é válida
         if (isNaN(vencimentoDate)) {
