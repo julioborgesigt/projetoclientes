@@ -398,8 +398,8 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
 
         console.log('Vencimento recebido:', vencimento); // Adiciona um log para verificar o valor da data
 
-        // Tenta criar a data a partir da string de vencimento
-        const vencimentoDate = new Date(vencimento);
+        // Concatena a hora para garantir que o JavaScript interprete corretamente a data
+        const vencimentoDate = new Date(vencimento + 'T00:00:00.000Z'); 
 
         console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
 
@@ -423,6 +423,7 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
         alert('Erro ao enviar mensagem pelo WhatsApp.');
     }
 }
+
 
 
 
