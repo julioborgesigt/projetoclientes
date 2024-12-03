@@ -385,7 +385,6 @@ async function adjustDate(clientId, days) {
     }
 }
 
-
 async function sendWhatsAppMessage(whatsapp, vencimento) {
     try {
         // Busca a mensagem padrão do backend
@@ -397,11 +396,19 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
             return;
         }
 
-        // Converte a data de vencimento para um objeto Date e formata
+        // Verifique se o vencimento é uma data válida
         const vencimentoDate = new Date(vencimento);
-        const formattedDate = isNaN(vencimentoDate) ? 'Data inválida' : vencimentoDate.toLocaleDateString('pt-BR');
+        
+        // Verifica se a data é válida
+        if (isNaN(vencimentoDate)) {
+            alert('Data inválida.');
+            return;
+        }
 
-        // Mensagem padrão com a data de vencimento incluída
+        // Formata a data de vencimento no formato brasileiro (DD/MM/AAAA)
+        const formattedDate = vencimentoDate.toLocaleDateString('pt-BR');
+
+        // Mensagem com a data de vencimento incluída
         const message = `${data.message} Vencimento: ${formattedDate}`;
 
         // Envia o link para o WhatsApp
@@ -412,6 +419,7 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
         alert('Erro ao enviar mensagem pelo WhatsApp.');
     }
 }
+
 
 
 
