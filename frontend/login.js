@@ -1,3 +1,20 @@
+document.querySelectorAll('.toggle-form').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const target = toggle.dataset.target; // Identifica o container alvo
+        const container = document.querySelector('.auth-container');
+
+        if (target === 'register') {
+            container.classList.add('active');
+        } else if (target === 'login') {
+            container.classList.remove('active');
+        }
+    });
+});
+
+// Eventos de login e registro já existentes
+
+
+
 // Evento de registro
 document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault(); // Impede o comportamento padrão do formulário
