@@ -511,13 +511,14 @@ button.toggle-options:hover {
     border: 1px solid #c3e6cb;
 }
 
-/* Responsividade */
+/* Responsividade: Mesma Disposição em Telas Pequenas */
 @media (max-width: 768px) {
     .button-row {
-       /* flex-direction: column;  Botões em pilha no celular */
+        flex-wrap: wrap; /* Mantém a mesma disposição */
+        gap: 10px; /* Espaçamento consistente entre os botões */
     }
 
     .button-row button {
-        width: 100%; /* Cada botão ocupa a largura total */
+        flex: 1; /* Botões ocupam tamanhos iguais */
     }
 }
