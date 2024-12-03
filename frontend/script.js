@@ -386,34 +386,29 @@ async function adjustDate(clientId, days) {
 }
 
 
-async function sendWhatsAppMessage(whatsappNumber) {
+async function sendWhatsAppMessage(whatsapp, vencimento) {
     try {
-        // Obter a mensagem padrão do backend
-        const response = await fetch('/clientes/get-message');
+        // Busca a mensagem padrão do backend
+        const response = await fetch('/config/whatsapp-message');
         const data = await response.json();
-        const message = `${data.message} Vencimento: ${new Date(vencimento).toLocaleDateString('pt-BR')}`;
 
-        if (!message || message.trim() === '') {
+        if (!response.ok) {
             alert('Nenhuma mensagem padrão foi configurada.');
             return;
         }
 
-        // Codificar a mensagem para URL
-        const encodedMessage = encodeURIComponent(message);
+        // Mensagem padrão com a data de vencimento incluída
+        const message = `${data.message} Vencimento: ${new Date(vencimento).toLocaleDateString('pt-BR')}`;
 
-        // Formatar o número do WhatsApp (removendo espaços e caracteres inválidos)
-        const formattedNumber = whatsappNumber.replace(/\D/g, '');
-
-        // Construir o link do WhatsApp
-        const whatsappLink = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
-
-        // Abrir o link do WhatsApp em uma nova guia
+        // Envia o link para o WhatsApp
+        const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
         window.open(whatsappLink, '_blank');
     } catch (error) {
-        console.error('Erro ao obter a mensagem padrão:', error);
-        alert('Erro ao obter a mensagem padrão.');
+        console.error('Erro ao enviar mensagem pelo WhatsApp:', error);
+        alert('Erro ao enviar mensagem pelo WhatsApp.');
     }
 }
+
 
 // Função para excluir um cliente
 async function deleteClient(id) {
