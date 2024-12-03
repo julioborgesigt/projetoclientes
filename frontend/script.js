@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
     
+            // Cria os botões de ação
             clientItem.innerHTML = `
                 <p><strong>Nome:</strong> ${client.name}</p>
                 <p><strong>Vencimento:</strong> ${client.vencimento}</p>
@@ -23,14 +24,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
                 <p><strong>Observações:</strong> ${client.observacoes}</p>
                 <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-                <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-                <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                <div class="client-actions" style="display: none;">
+                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                    <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                    <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                    <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                    <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                    <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                </div>
+                <button class="toggle-options" onclick="toggleOptions(this)">Mostrar opções</button>
             `;
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -256,6 +264,7 @@ function displayClients(clients) {
         const statusClass = client.status === 'pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
 
+        // Cria os botões de ação
         clientItem.innerHTML = `
             <p><strong>Nome:</strong> ${client.name}</p>
             <p><strong>Vencimento:</strong> ${client.vencimento}</p>
@@ -263,15 +272,54 @@ function displayClients(clients) {
             <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
             <p><strong>Observações:</strong> ${client.observacoes}</p>
             <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-            <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-            <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-            <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-            <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+            <div class="client-actions" style="display: none;">
+                <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+            </div>
+            <button class="toggle-options" onclick="toggleOptions(this)">Mostrar opções</button>
         `;
         clientsList.appendChild(clientItem);
     });
 }
 
+function toggleOptions(button) {
+    const actions = button.previousElementSibling; // Seleciona o elemento de ações
+    if (actions.style.display === 'none') {
+        actions.style.display = 'block'; // Mostra as opções
+        button.textContent = 'Ocultar opções'; // Altera o texto do botão
+    } else {
+        actions.style.display = 'none'; // Oculta as opções
+        button.textContent = 'Mostrar opções'; // Altera o texto do botão
+    }
+}
+
+async function adjustDate(clientId, days) {
+    try {
+        const response = await fetch(`/clientes/adjust-date/${clientId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ days }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(errorData.error || 'Erro ao ajustar a data.');
+            return;
+        }
+
+        const data = await response.json();
+        alert(data.message);
+        getClients(); // Atualiza a lista de clientes
+    } catch (error) {
+        console.error('Erro ao ajustar a data:', error);
+        alert('Erro ao ajustar a data.');
+    }
+}
 
 
 async function sendWhatsAppMessage(whatsappNumber) {

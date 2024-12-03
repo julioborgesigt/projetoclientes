@@ -125,3 +125,19 @@ router.get('/get-message', (req, res) => {
 
 
 
+router.put('/adjust-date/:id', (req, res) => {
+    const { id } = req.params;
+    const { days } = req.body;
+
+    db.query(
+        'UPDATE clientes SET vencimento = DATE_ADD(vencimento, INTERVAL ? DAY) WHERE id = ?',
+        [days, id],
+        (err) => {
+            if (err) {
+                console.error('Erro ao ajustar a data:', err);
+                return res.status(500).json({ error: 'Erro ao ajustar a data.' });
+            }
+            res.status(200).json({ message: `Data ajustada em ${days} dias com sucesso!` });
+        }
+    );
+});

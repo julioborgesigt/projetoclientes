@@ -39,14 +39,37 @@ form button {
 }
 
 /* Estilo básico para todos os botões */
+.client-actions {
+    margin-top: 10px;
+}
+
 button {
-    padding: 10px 15px; /* Tamanho consistente */
-    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px 15px;
+    border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    margin-right: 5px;
     border: none;
-    margin-right: 5px; /* Espaço entre os botões */
 }
+
+button.toggle-options {
+    background-color: #007BFF; /* Azul */
+    color: white;
+}
+
+button.toggle-options:hover {
+    background-color: #0056b3;
+}
+
+button.add-30, button.add-1, button.sub-1 {
+    background-color: #FFC107; /* Amarelo */
+    color: black;
+}
+
+button.add-30:hover, button.add-1:hover, button.sub-1:hover {
+    background-color: #FFA000;
+}
+
 
 /* Botão de WhatsApp */
 button.whatsapp {
