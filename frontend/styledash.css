@@ -514,7 +514,7 @@ button.toggle-options:hover {
 /* Responsividade */
 @media (max-width: 768px) {
     .button-row {
-        flex-direction: column; /* Botões em pilha no celular */
+       /* flex-direction: column;  Botões em pilha no celular */
     }
 
     .button-row button {
