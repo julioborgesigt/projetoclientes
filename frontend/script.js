@@ -14,37 +14,41 @@ document.addEventListener('DOMContentLoaded', function () {
     
             // Define uma classe CSS com base no status
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
-                                client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
+                                client.status === 'cobrança feita' ? 'status-cobrança-feita' :
+                                client.status === 'em dias' ? 'status-em-dias' : '';
     
             // Cria os botões de ação
             clientItem.innerHTML = `
-    <p><strong>Nome:</strong> ${client.name}</p>
-    <p><strong>Vencimento:</strong> ${client.vencimento}</p>
-    <p><strong>Serviço:</strong> ${client.servico}</p>
-    <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
-    <p><strong>Observações:</strong> ${client.observacoes}</p>
-    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-    <div class="client-actions" style="display: none;">
-        <div class="button-row">
-            <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-            <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-        </div>
-        <div class="button-row">
-            <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-            <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
-        </div>
-        <div class="button-row">
-            <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
-            <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
-            <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
-        </div>
-    </div>
-    <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
-`;
-
+                <p><strong>Nome:</strong> ${client.name}</p>
+                <p><strong>Vencimento:</strong> ${client.vencimento}</p>
+                <p><strong>Serviço:</strong> ${client.servico}</p>
+                <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
+                <p><strong>Observações:</strong> ${client.observacoes}</p>
+                <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+                <div class="client-actions" style="display: none;">
+                    <div class="button-row">
+                        <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                        <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                        <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                        <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                    </div>
+                </div>
+                <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+            `;
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -269,37 +273,41 @@ function displayClients(clients) {
 
         // Define uma classe CSS com base no status
         const statusClass = client.status === 'pendente' ? 'status-pendente' :
-                            client.status === 'cobrança feita' ? 'status-cobrança-feita' : '';
+                            client.status === 'cobrança feita' ? 'status-cobrança-feita' :
+                            client.status === 'em dias' ? 'status-em-dias' : '';
 
         // Cria os botões de ação
         clientItem.innerHTML = `
-        <p><strong>Nome:</strong> ${client.name}</p>
-        <p><strong>Vencimento:</strong> ${client.vencimento}</p>
-        <p><strong>Serviço:</strong> ${client.servico}</p>
-        <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
-        <p><strong>Observações:</strong> ${client.observacoes}</p>
-        <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-        <div class="client-actions" style="display: none;">
-            <div class="button-row">
-                <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+            <p><strong>Nome:</strong> ${client.name}</p>
+            <p><strong>Vencimento:</strong> ${client.vencimento}</p>
+            <p><strong>Serviço:</strong> ${client.servico}</p>
+            <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
+            <p><strong>Observações:</strong> ${client.observacoes}</p>
+            <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+            <div class="client-actions" style="display: none;">
+                <div class="button-row">
+                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                    <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                </div>
+                <div class="button-row">
+                    <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                </div>
+                <div class="button-row">
+                    <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                    <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                    <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                </div>
+                <div class="button-row">
+                    <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                </div>
             </div>
-            <div class="button-row">
-                <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
-            </div>
-            <div class="button-row">
-                <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
-                <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
-                <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
-            </div>
-        </div>
-        <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
-    `;
-    
+            <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+        `;
         clientsList.appendChild(clientItem);
     });
 }
+
 
 function toggleOptions(button) {
     const actions = button.previousElementSibling; // Seleciona o elemento de ações
@@ -311,6 +319,30 @@ function toggleOptions(button) {
         button.textContent = 'Mostrar opções'; // Altera o texto do botão
     }
 }
+
+
+async function markAsInDay(id) {
+    try {
+        const response = await fetch(`/clientes/mark-in-day/${id}`, {
+            method: 'PUT',
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(errorData.error || 'Erro ao marcar como em dias.');
+            return;
+        }
+
+        const data = await response.json();
+        alert(data.message);
+        getClients(); // Atualiza a lista de clientes
+    } catch (error) {
+        console.error('Erro ao atualizar status:', error);
+        alert('Erro ao atualizar status.');
+    }
+}
+
+
 
 async function adjustDate(clientId, days) {
     try {

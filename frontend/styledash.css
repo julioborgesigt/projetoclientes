@@ -187,3 +187,64 @@ button.toggle-options:hover {
     color: #ff8c00;
     border: 1px solid #ff8c00;
 }
+
+
+/* Caixa de Texto da Mensagem Padrão */
+textarea#default-message {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    margin-bottom: 10px;
+}
+
+/* Botões Salvar e Ordenar */
+button#save-message,
+button#sort-clients {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Botão Salvar */
+button#save-message {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+button#save-message:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+}
+
+/* Botão Ordenar por Vencimento */
+button#sort-clients {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+button#sort-clients:hover {
+    background-color: #218838; /* Verde mais escuro */
+}
+
+
+/* Botão Em Dias */
+button.em-dias {
+    background-color: #1E7E34; /* Verde escuro */
+    color: white;
+}
+
+button.em-dias:hover {
+    background-color: #155724; /* Verde ainda mais escuro */
+}
+
+/* Status Em Dias */
+.status-em-dias {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    border: 1px solid #c3e6cb;
+}

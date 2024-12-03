@@ -141,3 +141,20 @@ router.put('/adjust-date/:id', (req, res) => {
         }
     );
 });
+
+
+router.put('/mark-in-day/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.query(
+        'UPDATE clientes SET status = "em dias" WHERE id = ?',
+        [id],
+        (err) => {
+            if (err) {
+                console.error('Erro ao atualizar status para em dias:', err);
+                return res.status(500).json({ error: 'Erro ao atualizar status para em dias.' });
+            }
+            res.status(200).json({ message: 'Cliente marcado como em dias com sucesso!' });
+        }
+    );
+});
