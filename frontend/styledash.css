@@ -248,3 +248,93 @@ button.em-dias:hover {
     color: #155724; /* Verde escuro */
     border: 1px solid #c3e6cb;
 }
+
+/* Estilo do Formulário Moderno */
+#add-client-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#add-client-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+#add-client-form input,
+#add-client-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-client-form input:focus,
+#add-client-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+#add-client-form textarea {
+    resize: vertical; /* Permite redimensionar apenas na vertical */
+}
+
+#add-client-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#add-client-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Adiciona animação ao formulário */
+#add-client-form {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #add-client-form {
+        padding: 15px;
+    }
+
+    #add-client-form input,
+    #add-client-form textarea {
+        font-size: 14px;
+    }
+
+    #add-client-form button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}

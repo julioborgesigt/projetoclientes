@@ -11,14 +11,26 @@
         <h1>Gerenciamento de Clientes</h1>
 
         <!-- Formulário para adicionar cliente -->
-        <form id="add-client-form">
-            <input type="text" id="client-name" placeholder="Nome do Cliente" required />
-            <input type="date" id="client-vencimento" required />
-            <input type="text" id="client-servico" placeholder="Serviço" required />
-            <input type="text" id="client-whatsapp" placeholder="Número de WhatsApp" required />
-            <textarea id="client-observacoes" placeholder="Observações"></textarea>
-            <button type="submit">Adicionar Cliente</button>
+        <h2>Gerenciamento de Clientes</h2>
+        <form id="add-client-form" class="form-modern">
+            <label for="client-name">Nome do Cliente</label>
+            <input type="text" id="client-name" placeholder="Digite o nome do cliente" required>
+
+            <label for="client-vencimento">Data de Vencimento</label>
+            <input type="date" id="client-vencimento" required>
+
+            <label for="client-servico">Serviço Escolhido</label>
+            <input type="text" id="client-servico" placeholder="Digite o serviço escolhido" required>
+
+            <label for="client-whatsapp">Número do WhatsApp</label>
+            <input type="text" id="client-whatsapp" placeholder="Digite o número do WhatsApp" required>
+
+            <label for="client-observacoes">Observações</label>
+            <textarea id="client-observacoes" placeholder="Digite as observações"></textarea>
+
+            <button type="submit" id="save-client">Adicionar Cliente</button>
         </form>
+
 
         <h2>Mensagem Padrão para WhatsApp</h2>
         <textarea id="default-message" placeholder="Digite a mensagem padrão"></textarea>
