@@ -30,22 +30,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
                     <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
                 </div>
-                <div class="client-actions" style="display: none;">
+                <div class="client-actions">
+                    <!-- Primeira fileira: Status -->
                     <div class="button-row">
-                        <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                         <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-                    </div>
-                    <div class="button-row">
                         <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                        <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
                     </div>
+                    <!-- Segunda fileira: Ajustes de Data -->
                     <div class="button-row">
                         <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                        <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
                         <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                         <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
                     </div>
+                    <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
-                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                        <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                        <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
                     </div>
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -53,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -295,22 +298,24 @@ function displayClients(clients) {
                 <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
                 <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
             </div>
-            <div class="client-actions" style="display: none;">
+            <div class="client-actions">
+                <!-- Primeira fileira: Status -->
                 <div class="button-row">
-                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                     <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-                </div>
-                <div class="button-row">
                     <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                    <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
                 </div>
+                <!-- Segunda fileira: Ajustes de Data -->
                 <div class="button-row">
                     <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                    <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
                     <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                     <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
                 </div>
+                <!-- Terceira fileira: Excluir e WhatsApp -->
                 <div class="button-row">
-                    <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
                 </div>
             </div>
             <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -318,6 +323,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
+
 
 
 function toggleOptions(button) {
