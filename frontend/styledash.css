@@ -20,11 +20,325 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+form input,
+form textarea,
+form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
 /* Lista de Clientes */
 #clients-list {
     margin-top: 20px;
 }
 
+.client-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.client-item:last-child {
+    border-bottom: none;
+}
+
+/* Botões para Ordenar Clientes */
+#sort-clients {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#sort-clients:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para Botões */
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    margin: 5px 0;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.button-row button {
+    flex: 1;
+    margin: 0 5px; /* Espaço entre botões */
+}
+
+/* Remove margens adicionais nos extremos */
+.button-row button:first-child {
+    margin-left: 0;
+}
+
+.button-row button:last-child {
+    margin-right: 0;
+}
+
+/* Botão de WhatsApp */
+button.whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+button.whatsapp:hover {
+    background-color: #1DA851;
+}
+
+/* Botão Excluir */
+button.excluir {
+    background-color: #D32F2F; /* Vermelho */
+    color: white;
+}
+
+button.excluir:hover {
+    background-color: #B71C1C; /* Vermelho mais escuro */
+}
+
+/* Botão Pagamento Pendente */
+button.pendente {
+    background-color: #F44336; /* Vermelho mais claro */
+    color: white;
+}
+
+button.pendente:hover {
+    background-color: #D32F2F; /* Vermelho mais escuro */
+}
+
+/* Botão Cobrança Feita */
+button.cobranca {
+    background-color: #FF9800; /* Laranja */
+    color: white;
+}
+
+button.cobranca:hover {
+    background-color: #FB8C00; /* Laranja mais escuro */
+}
+
+/* Botões de Ajuste de Data */
+button.add-30,
+button.add-1,
+button.sub-1 {
+    background-color: #FFC107; /* Amarelo */
+    color: black;
+}
+
+button.add-30:hover,
+button.add-1:hover,
+button.sub-1:hover {
+    background-color: #FFA000; /* Amarelo mais escuro */
+}
+
+/* Botão Ocultar/Mostrar Opções */
+button.toggle-options {
+    background-color: #007BFF; /* Azul */
+    color: white;
+    width: 100%;
+}
+
+button.toggle-options:hover {
+    background-color: #0056b3;
+}
+
+/* Status do Cliente */
+.status {
+    display: block;
+    background-color: #f0f0f0; /* Fundo cinza claro */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Status Pendente (vermelho) */
+.status-pendente {
+    background-color: #ffcccc;
+    color: #d00000;
+    border: 1px solid #d00000;
+}
+
+/* Status Cobrança Feita (laranja) */
+.status-cobrança-feita {
+    background-color: #ffe4b5;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
+}
+
+
+/* Caixa de Texto da Mensagem Padrão */
+textarea#default-message {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    margin-bottom: 10px;
+}
+
+/* Botões Salvar e Ordenar */
+button#save-message,
+button#sort-clients {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Botão Salvar */
+button#save-message {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+button#save-message:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+}
+
+/* Botão Ordenar por Vencimento */
+button#sort-clients {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+button#sort-clients:hover {
+    background-color: #218838; /* Verde mais escuro */
+}
+
+
+/* Botão Em Dias */
+button.em-dias {
+    background-color: #1E7E34; /* Verde escuro */
+    color: white;
+}
+
+button.em-dias:hover {
+    background-color: #155724; /* Verde ainda mais escuro */
+}
+
+/* Status Em Dias */
+.status-em-dias {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Verde escuro */
+    border: 1px solid #c3e6cb;
+}
+
+/* Estilo do Formulário Moderno */
+#add-client-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#add-client-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+#add-client-form input,
+#add-client-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-client-form input:focus,
+#add-client-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+#add-client-form textarea {
+    resize: vertical; /* Permite redimensionar apenas na vertical */
+}
+
+#add-client-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#add-client-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Adiciona animação ao formulário */
+#add-client-form {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #add-client-form {
+        padding: 15px;
+    }
+
+    #add-client-form input,
+    #add-client-form textarea {
+        font-size: 14px;
+    }
+
+    #add-client-form button {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+/* Estilo Geral do Item do Cliente */
 .client-item {
     padding: 15px;
     border: 1px solid #ddd;
@@ -65,14 +379,14 @@ body {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaçamento entre as fileiras */
+    gap: 10px;
 }
 
 /* Fileira de Botões */
 .button-row {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Espaçamento entre os botões */
+    gap: 10px;
 }
 
 .button-row button {
@@ -86,7 +400,7 @@ body {
 
 /* Botão Excluir */
 button.excluir {
-    background-color: #d32f2f; /* Vermelho */
+    background-color: #d32f2f;
     color: white;
 }
 
@@ -96,7 +410,7 @@ button.excluir:hover {
 
 /* Botão Pagamento Pendente */
 button.pendente {
-    background-color: #f44336; /* Vermelho */
+    background-color: #f44336;
     color: white;
 }
 
@@ -106,7 +420,7 @@ button.pendente:hover {
 
 /* Botão Cobrança Feita */
 button.cobranca {
-    background-color: #ff9800; /* Laranja */
+    background-color: #ff9800;
     color: white;
 }
 
@@ -116,20 +430,20 @@ button.cobranca:hover {
 
 /* Botão Em Dias */
 button.em-dias {
-    background-color: #1E7E34; /* Verde Escuro */
+    background-color: #1E7E34;
     color: white;
 }
 
 button.em-dias:hover {
-    background-color: #155724; /* Verde mais escuro */
+    background-color: #155724;
 }
 
-/* Botões de Ajuste de Data */
+/* Botão Ajustes de Data */
 button.add-30,
 button.sub-30,
 button.add-1,
 button.sub-1 {
-    background-color: #FFC107; /* Amarelo */
+    background-color: #FFC107;
     color: black;
 }
 
@@ -137,59 +451,15 @@ button.add-30:hover,
 button.sub-30:hover,
 button.add-1:hover,
 button.sub-1:hover {
-    background-color: #FFA000; /* Amarelo mais escuro */
+    background-color: #FFA000;
 }
 
 /* Botão WhatsApp */
 button.whatsapp {
-    background-color: #25d366; /* Verde WhatsApp */
+    background-color: #25d366;
     color: white;
 }
 
 button.whatsapp:hover {
     background-color: #1da851;
-}
-
-/* Botão Ocultar/Mostrar Opções */
-button.toggle-options {
-    background-color: #007BFF; /* Azul */
-    color: white;
-    width: 100%;
-}
-
-button.toggle-options:hover {
-    background-color: #0056b3;
-}
-
-/* Status do Cliente */
-.status {
-    display: block;
-    background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-/* Status Pendente */
-.status-pendente {
-    background-color: #ffcccc;
-    color: #d00000;
-    border: 1px solid #d00000;
-}
-
-/* Status Cobrança Feita */
-.status-cobrança-feita {
-    background-color: #ffe4b5;
-    color: #ff8c00;
-    border: 1px solid #ff8c00;
-}
-
-/* Status Em Dias */
-.status-em-dias {
-    background-color: #d4edda; /* Verde claro */
-    color: #155724; /* Verde escuro */
-    border: 1px solid #c3e6cb;
 }
