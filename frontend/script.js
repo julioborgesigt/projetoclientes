@@ -396,12 +396,12 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
             return;
         }
 
-        console.log('Vencimento recebido:', vencimento); // Adiciona um log para verificar o valor da data
+        alert('Vencimento recebido:', vencimento); // Adiciona um log para verificar o valor da data
 
         // Concatena a hora para garantir que o JavaScript interprete corretamente a data
         const vencimentoDate = new Date(vencimento + 'T00:00:00.000Z'); 
 
-        console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
+        alert('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
 
         // Verifica se a data é válida
         if (isNaN(vencimentoDate)) {
