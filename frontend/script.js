@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                        <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
                     </div>
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -315,7 +315,7 @@ function displayClients(clients) {
                 <!-- Terceira fileira: Excluir e WhatsApp -->
                 <div class="button-row">
                     <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
                 </div>
             </div>
             <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
