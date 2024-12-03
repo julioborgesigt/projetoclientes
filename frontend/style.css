@@ -1,4 +1,10 @@
-/* Estilo Geral */
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,20 +12,18 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
+/* Wrapper e Container */
 .auth-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
 }
 
 .auth-container {
     position: relative;
     width: 100%;
+    height: 500px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -39,6 +43,7 @@ body {
     transition: transform 0.6s ease-in-out;
 }
 
+/* Posição Inicial */
 .login-container {
     transform: translateX(0);
 }
@@ -47,6 +52,7 @@ body {
     transform: translateX(100%);
 }
 
+/* Ativa o Container de Cadastro */
 .auth-container.active .login-container {
     transform: translateX(-100%);
 }
@@ -55,7 +61,7 @@ body {
     transform: translateX(0);
 }
 
-/* Estilo dos Formulários */
+/* Formulários */
 form h2 {
     margin-bottom: 20px;
     color: #333;
@@ -102,9 +108,5 @@ form p .toggle-form {
 @media (max-width: 768px) {
     .auth-wrapper {
         padding: 10px;
-    }
-
-    .auth-container {
-        max-width: 100%;
     }
 }

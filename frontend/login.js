@@ -1,3 +1,19 @@
+// Aguarda o DOM ser carregado antes de executar o código
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleForms = document.querySelectorAll('.toggle-form');
+    const container = document.querySelector('.auth-container');
+
+    toggleForms.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const target = toggle.dataset.target;
+            if (target === 'register') {
+                container.classList.add('active');
+            } else if (target === 'login') {
+                container.classList.remove('active');
+            }
+        });
+    });
+});
 
 
 // Eventos de login e registro já existentes
