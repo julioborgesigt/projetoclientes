@@ -389,7 +389,7 @@ async function adjustDate(clientId, days) {
 async function sendWhatsAppMessage(whatsapp, vencimento) {
     try {
         // Busca a mensagem padrão do backend
-        const response = await fetch('/config/whatsapp-message');
+        const response = await fetch('/clientes/get-message');
         const data = await response.json();
 
         if (!response.ok) {
