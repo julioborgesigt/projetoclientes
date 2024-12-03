@@ -18,23 +18,30 @@ document.addEventListener('DOMContentLoaded', function () {
     
             // Cria os botões de ação
             clientItem.innerHTML = `
-                <p><strong>Nome:</strong> ${client.name}</p>
-                <p><strong>Vencimento:</strong> ${client.vencimento}</p>
-                <p><strong>Serviço:</strong> ${client.servico}</p>
-                <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
-                <p><strong>Observações:</strong> ${client.observacoes}</p>
-                <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-                <div class="client-actions" style="display: none;">
-                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                    <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
-                    <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
-                    <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
-                    <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
-                    <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
-                </div>
-                <button class="toggle-options" onclick="toggleOptions(this)">Mostrar opções</button>
-            `;
+    <p><strong>Nome:</strong> ${client.name}</p>
+    <p><strong>Vencimento:</strong> ${client.vencimento}</p>
+    <p><strong>Serviço:</strong> ${client.servico}</p>
+    <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
+    <p><strong>Observações:</strong> ${client.observacoes}</p>
+    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+    <div class="client-actions" style="display: none;">
+        <div class="button-row">
+            <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+            <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+        </div>
+        <div class="button-row">
+            <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+            <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+        </div>
+        <div class="button-row">
+            <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+            <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+            <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+        </div>
+    </div>
+    <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+`;
+
             clientsList.appendChild(clientItem);
         });
     }
@@ -266,23 +273,30 @@ function displayClients(clients) {
 
         // Cria os botões de ação
         clientItem.innerHTML = `
-            <p><strong>Nome:</strong> ${client.name}</p>
-            <p><strong>Vencimento:</strong> ${client.vencimento}</p>
-            <p><strong>Serviço:</strong> ${client.servico}</p>
-            <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
-            <p><strong>Observações:</strong> ${client.observacoes}</p>
-            <p class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-            <div class="client-actions" style="display: none;">
+        <p><strong>Nome:</strong> ${client.name}</p>
+        <p><strong>Vencimento:</strong> ${client.vencimento}</p>
+        <p><strong>Serviço:</strong> ${client.servico}</p>
+        <p><strong>WhatsApp:</strong> ${client.whatsapp}</p>
+        <p><strong>Observações:</strong> ${client.observacoes}</p>
+        <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+        <div class="client-actions" style="display: none;">
+            <div class="button-row">
                 <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                 <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+            </div>
+            <div class="button-row">
                 <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                 <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
+            </div>
+            <div class="button-row">
                 <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
                 <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                 <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
             </div>
-            <button class="toggle-options" onclick="toggleOptions(this)">Mostrar opções</button>
-        `;
+        </div>
+        <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+    `;
+    
         clientsList.appendChild(clientItem);
     });
 }

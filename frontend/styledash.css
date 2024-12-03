@@ -1,3 +1,4 @@
+/* Reset e Estilo Geral */
 * {
     margin: 0;
     padding: 0;
@@ -38,38 +39,63 @@ form button {
     font-size: 16px;
 }
 
-/* Estilo básico para todos os botões */
-.client-actions {
-    margin-top: 10px;
+/* Lista de Clientes */
+#clients-list {
+    margin-top: 20px;
 }
 
+.client-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.client-item:last-child {
+    border-bottom: none;
+}
+
+/* Botões para Ordenar Clientes */
+#sort-clients {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#sort-clients:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para Botões */
 button {
     padding: 10px 15px;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
-    margin-right: 5px;
     border: none;
+    margin: 5px 0;
 }
 
-button.toggle-options {
-    background-color: #007BFF; /* Azul */
-    color: white;
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
 }
 
-button.toggle-options:hover {
-    background-color: #0056b3;
+.button-row button {
+    flex: 1;
+    margin: 0 5px; /* Espaço entre botões */
 }
 
-button.add-30, button.add-1, button.sub-1 {
-    background-color: #FFC107; /* Amarelo */
-    color: black;
+/* Remove margens adicionais nos extremos */
+.button-row button:first-child {
+    margin-left: 0;
 }
 
-button.add-30:hover, button.add-1:hover, button.sub-1:hover {
-    background-color: #FFA000;
+.button-row button:last-child {
+    margin-right: 0;
 }
-
 
 /* Botão de WhatsApp */
 button.whatsapp {
@@ -111,40 +137,41 @@ button.cobranca:hover {
     background-color: #FB8C00; /* Laranja mais escuro */
 }
 
-
-#clients-list {
-    margin-top: 20px;
+/* Botões de Ajuste de Data */
+button.add-30,
+button.add-1,
+button.sub-1 {
+    background-color: #FFC107; /* Amarelo */
+    color: black;
 }
 
-.client-item {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+button.add-30:hover,
+button.add-1:hover,
+button.sub-1:hover {
+    background-color: #FFA000; /* Amarelo mais escuro */
 }
 
-.client-item:last-child {
-    border-bottom: none;
-}
-
-#sort-clients {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
+/* Botão Ocultar/Mostrar Opções */
+button.toggle-options {
+    background-color: #007BFF; /* Azul */
     color: white;
-    border: none;
-    cursor: pointer;
+    width: 100%;
 }
 
-#sort-clients:hover {
+button.toggle-options:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para o status do cliente */
+/* Status do Cliente */
 .status {
+    display: block;
+    background-color: #f0f0f0; /* Fundo cinza claro */
+    padding: 10px;
+    text-align: center;
     font-weight: bold;
-    margin-top: 10px;
-    padding: 5px 10px;
     border-radius: 5px;
-    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 /* Status Pendente (vermelho) */
@@ -160,4 +187,3 @@ button.cobranca:hover {
     color: #ff8c00;
     border: 1px solid #ff8c00;
 }
-
