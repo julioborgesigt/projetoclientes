@@ -9,32 +9,48 @@ document.addEventListener('DOMContentLoaded', function () {
         clientsList.innerHTML = ''; // Limpa a lista de clientes
     
         clients.forEach(client => {
-            const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR'); // Formata a data
+            const clientItem = document.createElement('div');
+            clientItem.classList.add('client-item');
+    
+            // Formata a data de vencimento
+            const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR');
+    
+            // Define uma classe CSS com base no status
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
                                 client.status === 'em dias' ? 'status-em-dias' : '';
     
-            const clientCard = `
-                <div class="client-card">
-                    <div class="client-header">
-                        <h3>${client.name}</h3>
-                        <p class="status ${statusClass}">${client.status || 'Sem Status'}</p>
-                    </div>
-                    <div class="client-info">
-                        <p><strong>Vencimento:</strong> ${formattedDate}</p>
-                        <p><strong>Serviço:</strong> ${client.servico}</p>
-                        <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
-                        <p><strong>Observações:</strong> ${client.observacoes}</p>
-                    </div>
-                    <div class="client-actions">
+            // Cria os botões de ação
+            clientItem.innerHTML = `
+                <div class="client-info">
+                    <p><strong>Nome:</strong> <span>${client.name}</span></p>
+                    <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
+                    <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
+                    <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
+                    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+                </div>
+                <div class="client-actions" style="display: none;">
+                    <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                         <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                    </div>
+                    <div class="button-row">
                         <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
                     </div>
+                    <div class="button-row">
+                        <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                        <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                        <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                    </div>
+                    <div class="button-row">
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                    </div>
                 </div>
+                <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
             `;
-            clientsList.innerHTML += clientCard; // Adiciona o cartão à lista
+            clientsList.appendChild(clientItem);
         });
     }
     
@@ -258,35 +274,50 @@ function displayClients(clients) {
     clientsList.innerHTML = ''; // Limpa a lista de clientes
 
     clients.forEach(client => {
-        const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR'); // Formata a data
+        const clientItem = document.createElement('div');
+        clientItem.classList.add('client-item');
+
+        // Formata a data de vencimento
+        const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR');
+
+        // Define uma classe CSS com base no status
         const statusClass = client.status === 'pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' :
                             client.status === 'em dias' ? 'status-em-dias' : '';
 
-        const clientCard = `
-            <div class="client-card">
-                <div class="client-header">
-                    <h3>${client.name}</h3>
-                    <p class="status ${statusClass}">${client.status || 'Sem Status'}</p>
-                </div>
-                <div class="client-info">
-                    <p><strong>Vencimento:</strong> ${formattedDate}</p>
-                    <p><strong>Serviço:</strong> ${client.servico}</p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
-                    <p><strong>Observações:</strong> ${client.observacoes}</p>
-                </div>
-                <div class="client-actions">
+        // Cria os botões de ação
+        clientItem.innerHTML = `
+            <div class="client-info">
+                <p><strong>Nome:</strong> <span>${client.name}</span></p>
+                <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
+                <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
+                <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
+                <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
+            </div>
+            <div class="client-actions" style="display: none;">
+                <div class="button-row">
                     <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                     <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                </div>
+                <div class="button-row">
                     <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                     <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}')">WhatsApp</button>
                 </div>
+                <div class="button-row">
+                    <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                    <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                    <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                </div>
+                <div class="button-row">
+                    <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                </div>
             </div>
+            <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
         `;
-        clientsList.innerHTML += clientCard; // Adiciona o cartão à lista
+        clientsList.appendChild(clientItem);
     });
 }
-
 
 
 function toggleOptions(button) {
