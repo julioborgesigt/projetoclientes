@@ -391,7 +391,7 @@ async function sendWhatsAppMessage(whatsappNumber) {
         // Obter a mensagem padrão do backend
         const response = await fetch('/clientes/get-message');
         const data = await response.json();
-        const message = data.message;
+        const message = `${data.message} Vencimento: ${new Date(vencimento).toLocaleDateString('pt-BR')}`;
 
         if (!message || message.trim() === '') {
             alert('Nenhuma mensagem padrão foi configurada.');
