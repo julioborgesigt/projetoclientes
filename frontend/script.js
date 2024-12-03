@@ -328,14 +328,15 @@ function displayClients(clients) {
 
 function toggleOptions(button) {
     const actions = button.previousElementSibling; // Seleciona o elemento de ações
-    if (actions.style.display === 'none') {
-        actions.style.display = 'block'; // Mostra as opções
+    if (actions.style.display === 'none' || actions.style.display === '') {
+        actions.style.display = 'flex'; // Mostra as opções
         button.textContent = 'Ocultar opções'; // Altera o texto do botão
     } else {
         actions.style.display = 'none'; // Oculta as opções
         button.textContent = 'Mostrar opções'; // Altera o texto do botão
     }
 }
+
 
 
 async function markAsInDay(id) {
