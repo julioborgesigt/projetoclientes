@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="client-actions">
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
-                        <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
                         <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                         <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
                     </div>
@@ -301,7 +301,7 @@ function displayClients(clients) {
             <div class="client-actions">
                 <!-- Primeira fileira: Status -->
                 <div class="button-row">
-                    <button class="pendente" onclick="markAsPending(${client.id})">Pagamento Pendente</button>
+                    <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
                     <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
                     <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
                 </div>

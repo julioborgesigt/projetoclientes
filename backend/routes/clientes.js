@@ -15,7 +15,7 @@ router.post('/add', (req, res) => {
         }
     );
 });
-
+/*
 // Rota para listar clientes
 router.get('/list', (req, res) => {
     db.query('SELECT * FROM clientes', (err, results) => {
@@ -23,7 +23,7 @@ router.get('/list', (req, res) => {
         res.status(200).json(results);
     });
 });
-
+*/
 module.exports = router;
 
 
@@ -76,10 +76,14 @@ router.put('/mark-paid/:id', (req, res) => {
 
 router.get('/list', (req, res) => {
     db.query('SELECT * FROM clientes ORDER BY vencimento ASC', (err, results) => {
-        if (err) return res.status(500).json({ error: 'Erro ao listar clientes' });
-        res.json(results); // Retorna os clientes com todos os campos, incluindo o status
+        if (err) {
+            console.error('Erro ao listar clientes:', err);
+            return res.status(500).json({ error: 'Erro ao listar clientes.' });
+        }
+        res.status(200).json(results);
     });
 });
+
 
 
 // Salvar mensagem padrão no banco de dados
