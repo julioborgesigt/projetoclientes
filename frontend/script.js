@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${formattedDate}')">WhatsApp</button>
                     </div>
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -256,7 +256,7 @@ async function checkAlerts() {
 // Verificar alertas ao carregar o dashboard
 document.addEventListener('DOMContentLoaded', checkAlerts);
 
-
+/*
 async function sendMessage(whatsapp, message) {
     try {
         const response = await fetch('/clientes/send-message', {
@@ -271,7 +271,7 @@ async function sendMessage(whatsapp, message) {
         alert('Erro ao enviar mensagem:', error);
     }
 }
-
+*/
 
 function displayClients(clients) {
     clientsList.innerHTML = ''; // Limpa a lista de clientes
@@ -315,7 +315,7 @@ function displayClients(clients) {
                 <!-- Terceira fileira: Excluir e WhatsApp -->
                 <div class="button-row">
                     <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${formattedDate}')">WhatsApp</button>
                 </div>
             </div>
             <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -385,9 +385,9 @@ async function adjustDate(clientId, days) {
     }
 }
 
-async function sendWhatsAppMessage(whatsapp, vencimento) {
+async function sendWhatsAppMessage(whatsapp, formattedDate) {
     try {
-        alert('Data de vencimento recebida:', vencimento); // Log para verificar a variável vencimento
+        alert('Data de vencimento recebida:', formattedDate); // Log para verificar a variável vencimento
 
         // Busca a mensagem padrão do backend
         const response = await fetch('/clientes/get-message');
@@ -399,7 +399,7 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
         }
 
         // Verifica se a data de vencimento foi passada corretamente
-        if (!vencimento) {
+        if (!formattedDate) {
             console.log('Vencimento está vazio.');
             alert('Data de vencimento não disponível.');
             return;
@@ -410,7 +410,7 @@ async function sendWhatsAppMessage(whatsapp, vencimento) {
         console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
 
         // Verifica se a data é válida
-        if (isNaN(vencimentoDate)) {
+        if (isNaN(formattedDate)) {
             alert('Data inválida.');
             return;
         }
