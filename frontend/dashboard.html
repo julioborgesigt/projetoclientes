@@ -23,7 +23,18 @@
             <input type="text" id="client-servico" placeholder="Digite o serviço escolhido" required>
 
             <label for="client-whatsapp">Número do WhatsApp</label>
-            <input type="text" id="client-whatsapp" placeholder="Digite o número do WhatsApp" required>
+            <!-- Campo de WhatsApp -->
+<input 
+type="text" 
+id="client-whatsapp" 
+value="${client.whatsapp || '+55'}" 
+placeholder="WhatsApp (+55XXXXXXXXXXX)" 
+maxlength="14" 
+pattern="\\+55\\d{11}" 
+required 
+title="Digite o número no formato: +5588999738779"
+/>
+
 
             <label for="client-observacoes">Observações</label>
             <textarea id="client-observacoes" placeholder="Digite as observações"></textarea>

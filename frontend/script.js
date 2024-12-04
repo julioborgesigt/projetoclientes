@@ -59,7 +59,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
                             <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
                             <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
-                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
+                            <!-- Campo de WhatsApp -->
+                            <input 
+                                type="text" 
+                                id="edit-whatsapp-${client.id}" 
+                                value="${client.whatsapp || '+55'}" 
+                                placeholder="WhatsApp (+55XXXXXXXXXXX)" 
+                                maxlength="14" 
+                                pattern="\\+55\\d{11}" 
+                                required 
+                                title="Digite o número no formato: +5588999738779"
+                            />
+
                             <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
                             <button type="submit">Salvar</button>
                             <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
