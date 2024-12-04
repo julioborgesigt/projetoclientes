@@ -387,7 +387,7 @@ async function adjustDate(clientId, days) {
 
 async function sendWhatsAppMessage(whatsapp, clientId) {
     try {
-        // Obtém a mensagem padrão
+        // Busca a mensagem padrão do backend
         const response = await fetch('/clientes/get-message');
         const data = await response.json();
 
@@ -396,14 +396,15 @@ async function sendWhatsAppMessage(whatsapp, clientId) {
             return;
         }
 
-        // Obtém a data de vencimento do cliente
-        const vencimento = await getClientVencimento(clientId);
+        // Obtém a data de vencimento do cliente usando o clientId
+        const vencimento = await getClientVencimento(clientId); // Chama a nova função que busca a data de vencimento
+
         if (!vencimento) {
             alert('Data de vencimento não encontrada.');
             return;
         }
 
-        // Formata a data de vencimento no formato brasileiro (DD/MM/AAAA)
+        // Converte e formata a data de vencimento
         const vencimentoDate = new Date(vencimento);
         const formattedDate = vencimentoDate.toLocaleDateString('pt-BR');
 
@@ -419,9 +420,23 @@ async function sendWhatsAppMessage(whatsapp, clientId) {
     }
 }
 
+// Função para obter a data de vencimento de um cliente usando o clientId
+async function getClientVencimento(clientId) {
+    try {
+        const response = await fetch(`/clientes/get-vencimento/${clientId}`);
+        const data = await response.json();
 
+        if (!response.ok) {
+            console.error('Erro ao buscar data de vencimento');
+            return null;
+        }
 
-
+        return data.vencimento; // Retorna a data de vencimento
+    } catch (error) {
+        console.error('Erro ao obter data de vencimento:', error);
+        return null;
+    }
+}
 
 
 
