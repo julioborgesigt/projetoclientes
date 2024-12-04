@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.getElementById('client-name').value;
         const vencimento = document.getElementById('client-vencimento').value;
         const servico = document.getElementById('client-servico').value;
-        const whatsapp = '+55' + document.getElementById('add-whatsapp').value; // Adiciona o prefixo
+        const whatsapp = '+55' + document.getElementById('client-whatsapp').value; // Adiciona o prefixo
         const observacoes = document.getElementById('client-observacoes').value;
         
         
