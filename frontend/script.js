@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${formattedDate}')">WhatsApp</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
                     </div>
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -315,7 +315,7 @@ function displayClients(clients) {
                 <!-- Terceira fileira: Excluir e WhatsApp -->
                 <div class="button-row">
                     <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${formattedDate}')">WhatsApp</button>
+                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.vencimento}')">WhatsApp</button>
                 </div>
             </div>
             <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
@@ -385,9 +385,15 @@ async function adjustDate(clientId, days) {
     }
 }
 
-async function sendWhatsAppMessage(whatsapp, formattedDate) {
+async function sendWhatsAppMessage(whatsapp, vencimento) {
+
+    
+
     try {
-        alert('Data de vencimento recebida:', formattedDate); // Log para verificar a variável vencimento
+        // Formata a data de vencimento
+        const formattedDate = new Date(vencimento).toLocaleDateString('pt-BR');
+        alert('Data de vencimento recebida:', vencimento); // Log para verificar a variável vencimento
+        alert('Data de vencimento recebida2:', formattedDate); // Log para verificar a variável vencimento
 
         // Busca a mensagem padrão do backend
         const response = await fetch('/clientes/get-message');
@@ -399,23 +405,21 @@ async function sendWhatsAppMessage(whatsapp, formattedDate) {
         }
 
         // Verifica se a data de vencimento foi passada corretamente
-        if (!formattedDate) {
+        if (!vencimento) {
             console.log('Vencimento está vazio.');
             alert('Data de vencimento não disponível.');
             return;
         }
 
-        // Concatena a hora para garantir que o JavaScript interprete corretamente a data
-        const vencimentoDate = new Date(vencimento + 'T00:00:00.000Z');
-        console.log('Data após new Date(vencimento):', vencimentoDate); // Verifica se a data foi convertida corretamente
+        
 
         // Verifica se a data é válida
-        if (isNaN(formattedDate)) {
+        if (isNaN(vencimentoDate)) {
             alert('Data inválida.');
             return;
         }
 
-       
+        
 
         // Mensagem com a data de vencimento incluída
         const message = `${data.message} Vencimento: ${formattedDate}`;
