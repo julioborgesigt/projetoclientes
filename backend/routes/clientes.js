@@ -101,9 +101,17 @@ router.get('/list', (req, res) => {
             console.error('Erro ao listar clientes:', err);
             return res.status(500).json({ error: 'Erro ao listar clientes.' });
         }
-        res.status(200).json(results);
+
+        // Formata a data de vencimento para YYYY-MM-DD antes de enviar ao frontend
+        const formattedResults = results.map(cliente => ({
+            ...cliente,
+            vencimento: cliente.vencimento.toISOString().split('T')[0]
+        }));
+
+        res.status(200).json(formattedResults);
     });
 });
+
 
 
 
@@ -183,10 +191,18 @@ router.put('/adjust-date/:id', (req, res) => {
                 console.error('Erro ao ajustar a data:', err);
                 return res.status(500).json({ error: 'Erro ao ajustar a data.' });
             }
-            res.status(200).json({ message: `Data ajustada em ${days} dias com sucesso!` });
+
+            db.query('SELECT vencimento FROM clientes WHERE id = ?', [id], (err, results) => {
+                if (err) return res.status(500).json({ error: 'Erro ao buscar data ajustada.' });
+
+                // Retorna a data formatada
+                const formattedDate = results[0].vencimento.toISOString().split('T')[0];
+                res.status(200).json({ message: `Data ajustada com sucesso!`, vencimento: formattedDate });
+            });
         }
     );
 });
+
 
 
 router.put('/mark-in-day/:id', (req, res) => {

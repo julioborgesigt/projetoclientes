@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientItem.classList.add('client-item');
     
             // Formata a data de vencimento
-            const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR');
+            const formattedDate = client.vencimento;
     
             // Define uma classe CSS com base no status
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
@@ -96,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const servico = document.getElementById('client-servico').value;
         const whatsapp = document.getElementById('client-whatsapp').value;
         const observacoes = document.getElementById('client-observacoes').value;
-        const vencimentoISO = vencimento.toISOString().split('T')[0]; // Mantém apenas a parte da data (YYYY-MM-DD)
+        
 
-        const client = { name, vencimentoISO, servico, whatsapp, observacoes };
+        const client = { name, vencimento, servico, whatsapp, observacoes };
 
         try {
             const response = await fetch('/clientes/add', {
