@@ -23,7 +23,18 @@
             <input type="text" id="client-servico" placeholder="Digite o serviço escolhido" required>
 
             <label for="client-whatsapp">Número do WhatsApp</label>
-            <input type="text" id="client-whatsapp" placeholder="Digite o número do WhatsApp" required>
+            <div class="client-whatsapp">
+                <span class="prefix">+55</span>
+                <input 
+                    type="text" 
+                    id="add-whatsapp" 
+                    placeholder="89999999999" 
+                    maxlength="11" 
+                    pattern="\\d{11}" 
+                    required 
+                    title="Digite os 11 números do WhatsApp (ex.: 89999999999)"
+                />
+            </div>
 
             <label for="client-observacoes">Observações</label>
             <textarea id="client-observacoes" placeholder="Digite as observações"></textarea>

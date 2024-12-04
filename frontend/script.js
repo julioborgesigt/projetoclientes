@@ -95,10 +95,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const name = document.getElementById('client-name').value;
         const vencimento = document.getElementById('client-vencimento').value;
         const servico = document.getElementById('client-servico').value;
-        const whatsapp = document.getElementById('client-whatsapp').value;
+        const whatsapp = '+55' + document.getElementById('add-whatsapp').value; // Adiciona o prefixo
         const observacoes = document.getElementById('client-observacoes').value;
         
-
+        // Validação de formato (11 dígitos após o prefixo)
+        const whatsappRegex = /^\+55\d{11}$/;
+        if (!whatsappRegex.test(whatsapp)) {
+        alert('O número de WhatsApp deve conter exatamente 11 dígitos após o +55.');
+        return;
+        }
+        
         const client = { name, vencimento, servico, whatsapp, observacoes };
 
         try {

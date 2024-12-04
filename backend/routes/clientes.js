@@ -6,6 +6,12 @@ const router = express.Router();
 router.post('/add', (req, res) => {
     const { name, vencimento, servico, whatsapp, observacoes } = req.body;
 
+     // Validação de formato
+     const whatsappRegex = /^\+55\d{11}$/;
+     if (!whatsappRegex.test(whatsapp)) {
+         return res.status(400).json({ error: 'O número de WhatsApp deve estar no formato: +5588999738779.' });
+     }
+
     db.query(
         'INSERT INTO clientes (name, vencimento, servico, whatsapp, observacoes) VALUES (?, ?, ?, ?, ?)',
         [name, vencimento, servico, whatsapp, observacoes],
