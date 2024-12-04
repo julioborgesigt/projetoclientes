@@ -320,6 +320,16 @@ function toggleOptions(button) {
     }
 }
 
+function toggleForm() {
+    const form = document.getElementById('add-client-form');
+    const isFormVisible = form.style.display === 'block'; // Verifica se o formulário está visível
+
+    if (isFormVisible) {
+        form.style.display = 'none'; // Se estiver visível, oculta
+    } else {
+        form.style.display = 'block'; // Se estiver oculto, exibe
+    }
+}
 
 
 async function markAsInDay(id) {
