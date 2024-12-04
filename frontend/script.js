@@ -200,49 +200,6 @@ async function getClients() {
 
 
 
-/*
-    document.addEventListener('DOMContentLoaded', () => {
-        const saveButton = document.getElementById('save-message');
-        const messageInput = document.getElementById('default-message');
-    
-        if (!saveButton || !messageInput) {
-            alert('Botão ou campo de mensagem não encontrado!');
-            return;
-        }
-    
-        saveButton.addEventListener('click', async (e) => {
-            e.preventDefault();
-            alert('Botão Salvar Mensagem clicado!'); // Verificação básica
-    
-            const message = messageInput.value;
-    
-            if (!message.trim()) {
-                alert('A mensagem padrão não pode estar vazia.');
-                return;
-            }
-    
-            try {
-                const response = await fetch('/clientes/save-message', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message }),
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Erro ao salvar mensagem padrão.');
-                }
-    
-                const data = await response.json();
-                alert('Mensagem salva com sucesso: ' + data.message);
-            } catch (error) {
-                console.error('Erro ao salvar mensagem:', error);
-                alert('Erro ao salvar mensagem.');
-            }
-        });
-    });
-    
-*/
-
 
 async function checkAlerts() {
     try {
@@ -546,53 +503,3 @@ async function markAsPaid(id) {
         alert('Erro ao marcar como cobrança feita.');
     }
 }
-
-// Salvar mensagem padrão no backend
-// Evento para salvar mensagem
-// Evento para salvar mensagem
-/*
-document.getElementById('save-message').addEventListener('click', async (e) => {
-    e.preventDefault(); // Impede o comportamento padrão do botão (evitar reload da página)
-    
-    const message = document.getElementById('default-message').value;
-
-    if (!message.trim()) {
-        alert('A mensagem padrão não pode estar vazia.');
-        return;
-    }
-
-    alert('Mensagem padrão detectada: ' + message); // Verificando o valor da mensagem
-
-    try {
-        // Verifica se o fetch está sendo chamado corretamente
-        alert('Enviando mensagem para o servidor...');
-
-        const response = await fetch('/clientes/save-message', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message }),
-        });
-
-        // Verifica a resposta do servidor
-        alert('Resposta do servidor recebida: ' + response.status);
-
-        if (!response.ok) {
-            alert('Erro ao salvar mensagem padrão.');
-            throw new Error('Erro ao salvar mensagem padrão.');
-        }
-
-        const data = await response.json();
-        alert('Mensagem salva com sucesso: ' + data.message); // Mensagem de sucesso
-    } catch (error) {
-        console.error('Erro ao salvar mensagem:', error);
-        alert('Erro ao salvar mensagem.');
-    }
-});
-
-*/
-
-
-
-
-
-

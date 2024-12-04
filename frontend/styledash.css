@@ -446,7 +446,7 @@ button.add-30,
 button.sub-30,
 button.add-1,
 button.sub-1 {
-    background-color: #FFC107; /* Amarelo */
+    background-color: #4d4b4b; /* Amarelo */
     color: black;
 }
 
@@ -454,7 +454,7 @@ button.add-30:hover,
 button.sub-30:hover,
 button.add-1:hover,
 button.sub-1:hover {
-    background-color: #FFA000; /* Amarelo mais escuro */
+    background-color: #3d3c3c; /* Amarelo mais escuro */
 }
 
 /* Botão WhatsApp */

@@ -15,15 +15,7 @@ router.post('/add', (req, res) => {
         }
     );
 });
-/*
-// Rota para listar clientes
-router.get('/list', (req, res) => {
-    db.query('SELECT * FROM clientes', (err, results) => {
-        if (err) return res.status(500).json({ error: 'Erro ao buscar clientes' });
-        res.status(200).json(results);
-    });
-});
-*/
+
 module.exports = router;
 
 
