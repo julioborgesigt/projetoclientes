@@ -458,6 +458,17 @@ button.sub-1:hover {
     color: rgb(255, 255, 255);
 }
 
+/* Botão editar */
+button.editar {
+    background-color: #b8b8b8; /* Verde WhatsApp */
+    color: white;
+}
+
+button.whatsapp:hover {
+    background-color: #afafaf;
+}
+
+
 /* Botão WhatsApp */
 button.whatsapp {
     background-color: #25d366; /* Verde WhatsApp */
