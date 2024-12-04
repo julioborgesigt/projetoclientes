@@ -415,8 +415,7 @@ async function sendWhatsAppMessage(whatsapp, formattedDate) {
             return;
         }
 
-        // Formata a data de vencimento no formato brasileiro (DD/MM/AAAA)
-        const formattedDate = vencimentoDate.toLocaleDateString('pt-BR');
+       
 
         // Mensagem com a data de vencimento incluída
         const message = `${data.message} Vencimento: ${formattedDate}`;
