@@ -469,6 +469,48 @@ async function getClientVencimento(clientId) {
     }
 }
 
+function showEditForm(clientId, name, vencimento, servico, whatsapp, observacoes) {
+    const form = document.getElementById(`edit-form-${clientId}`);
+    form.style.display = 'block';
+}
+
+function hideEditForm(clientId) {
+    const form = document.getElementById(`edit-form-${clientId}`);
+    form.style.display = 'none';
+}
+
+
+async function editClient(event, clientId) {
+    event.preventDefault(); // Impede o envio do formulário padrão
+
+    // Obtém os valores dos campos de edição
+    const name = document.getElementById(`edit-name-${clientId}`).value;
+    const vencimento = document.getElementById(`edit-vencimento-${clientId}`).value;
+    const servico = document.getElementById(`edit-servico-${clientId}`).value;
+    const whatsapp = document.getElementById(`edit-whatsapp-${clientId}`).value;
+    const observacoes = document.getElementById(`edit-observacoes-${clientId}`).value;
+
+    try {
+        const response = await fetch(`/clientes/update/${clientId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, vencimento, servico, whatsapp, observacoes }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Cliente atualizado com sucesso!');
+            hideEditForm(clientId);
+            getClients(); // Atualiza a lista de clientes
+        } else {
+            alert(`Erro ao atualizar cliente: ${data.error}`);
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar cliente:', error);
+        alert('Erro ao atualizar cliente.');
+    }
+}
 
 
 // Função para excluir um cliente

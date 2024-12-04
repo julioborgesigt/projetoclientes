@@ -56,6 +56,27 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 
+router.put('/update/:id', (req, res) => {
+    const clientId = req.params.id;
+    const { name, vencimento, servico, whatsapp, observacoes } = req.body;
+
+    const query = `
+        UPDATE clientes 
+        SET name = ?, vencimento = ?, servico = ?, whatsapp = ?, observacoes = ?
+        WHERE id = ?
+    `;
+
+    db.query(query, [name, vencimento, servico, whatsapp, observacoes, clientId], (err, result) => {
+        if (err) {
+            console.error('Erro ao atualizar cliente:', err);
+            return res.status(500).json({ error: 'Erro ao atualizar cliente.' });
+        }
+
+        res.status(200).json({ message: 'Cliente atualizado com sucesso!' });
+    });
+});
+
+
 router.put('/mark-pending/:id', (req, res) => {
     const { id } = req.params;
     db.query('UPDATE clientes SET status = "pendente" WHERE id = ?', [id], (err) => {

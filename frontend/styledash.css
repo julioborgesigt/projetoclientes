@@ -522,3 +522,40 @@ button.toggle-options:hover {
         flex: 1; /* Botões ocupam tamanhos iguais */
     }
 }
+
+.edit-form {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.edit-form input,
+.edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-form button {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.edit-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-form button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
