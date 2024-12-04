@@ -73,12 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
 
+       
     
-    
-    
-    
-
-
     
     // Função para buscar a lista de clientes
     async function getClients() {
@@ -100,8 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const servico = document.getElementById('client-servico').value;
         const whatsapp = document.getElementById('client-whatsapp').value;
         const observacoes = document.getElementById('client-observacoes').value;
+        const vencimentoISO = vencimento.toISOString().split('T')[0]; // Mantém apenas a parte da data (YYYY-MM-DD)
 
-        const client = { name, vencimento, servico, whatsapp, observacoes };
+        const client = { name, vencimentoISO, servico, whatsapp, observacoes };
 
         try {
             const response = await fetch('/clientes/add', {
@@ -132,24 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Carregar a lista de clientes ao carregar a página
     getClients();
 
-
-    
-
-
 });
-
-
-
-    // Função para buscar a lista de clientes
-    async function getClients() {
-        try {
-            const response = await fetch('/clientes/list');
-            const data = await response.json();
-            displayClients(data);
-        } catch (error) {
-            console.error('Erro ao buscar clientes:', error);
-        }
-    }
 
 
 
