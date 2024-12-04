@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="client-actions">
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
-                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
-                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
+                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
                     </div>
                     <!-- Segunda fileira: Ajustes de Data -->
                     <div class="button-row">
@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
                          <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
                     </div>
                     <div class="button-row">
-                    <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                   
                     </div>
                     <!-- Formulário de edição oculto -->
                     <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
