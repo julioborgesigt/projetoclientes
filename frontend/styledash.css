@@ -574,9 +574,9 @@ button.toggle-options:hover {
 
 
 .whatsapp-field {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    display: flex; /* Alinha os elementos na mesma linha */
+    align-items: center; /* Garante o alinhamento vertical */
+    gap: 5px; /* Espaçamento entre o +55 e o campo de entrada */
 }
 
 .whatsapp-field .prefix {
@@ -587,12 +587,17 @@ button.toggle-options:hover {
     font-size: 14px;
     font-weight: bold;
     color: #333;
+    height: 100%; /* Garante que a altura se ajuste ao campo de entrada */
+    display: flex; /* Garante alinhamento de texto */
+    align-items: center; /* Centraliza verticalmente o texto */
 }
 
 .whatsapp-field input {
-    flex: 1;
+    flex: 1; /* Faz o campo ocupar o espaço restante */
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    height: 100%; /* Garante que o campo tenha a mesma altura do prefixo */
 }
+
