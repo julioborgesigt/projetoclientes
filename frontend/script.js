@@ -98,7 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const whatsapp = '+55' + document.getElementById('client-whatsapp').value; // Adiciona o prefixo
         const observacoes = document.getElementById('client-observacoes').value;
         
-        
+        // Validação de formato (11 dígitos após o prefixo)
+        if (!/^\d{11}$/.test(document.getElementById('client-whatsapp').value)) {
+        alert('O número de WhatsApp deve conter exatamente 11 dígitos.');
+        return;
+        }
 
         const client = { name, vencimento, servico, whatsapp, observacoes };
 
