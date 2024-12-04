@@ -602,18 +602,21 @@ button.toggle-options:hover {
 }
 
 #show-form-btn {
-    padding: 10px 20px;
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    padding: 10px 0; /* Ajusta o padding para dar uma boa altura ao botão */
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    text-align: center; /* Garante que o texto esteja centralizado */
 }
 
 #show-form-btn:hover {
     background-color: #0056b3;
 }
+
 
 #add-client-form {
     margin-top: 20px;
