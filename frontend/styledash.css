@@ -571,3 +571,28 @@ button.toggle-options:hover {
     background-color: #f44336;
     color: white;
 }
+
+
+.whatsapp-field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.whatsapp-field .prefix {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.whatsapp-field input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
