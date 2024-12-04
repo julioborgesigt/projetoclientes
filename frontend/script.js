@@ -59,18 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
                             <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
                             <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
-                            <!-- Campo de WhatsApp -->
-                            <input 
-                                type="text" 
-                                id="edit-whatsapp-${client.id}" 
-                                value="${client.whatsapp || '+55'}" 
-                                placeholder="WhatsApp (+55XXXXXXXXXXX)" 
-                                maxlength="14" 
-                                pattern="\\+55\\d{11}" 
-                                required 
-                                title="Digite o número no formato: +5588999738779"
-                            />
-
+                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
                             <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
                             <button type="submit">Salvar</button>
                             <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
@@ -441,20 +430,18 @@ function hideEditForm(clientId) {
 async function editClient(event, clientId) {
     event.preventDefault(); // Impede o envio do formulário padrão
 
+    // Obtém os valores dos campos de edição
+    const name = document.getElementById(`edit-name-${clientId}`).value;
+    const vencimento = document.getElementById(`edit-vencimento-${clientId}`).value;
+    const servico = document.getElementById(`edit-servico-${clientId}`).value;
     const whatsapp = document.getElementById(`edit-whatsapp-${clientId}`).value;
-
-    // Validação no frontend
-    const whatsappRegex = /^\+55\d{11}$/;
-    if (!whatsappRegex.test(whatsapp)) {
-        alert('O número de WhatsApp deve estar no formato: +5588999738779.');
-        return;
-    }
+    const observacoes = document.getElementById(`edit-observacoes-${clientId}`).value;
 
     try {
         const response = await fetch(`/clientes/update/${clientId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ whatsapp }),
+            body: JSON.stringify({ name, vencimento, servico, whatsapp, observacoes }),
         });
 
         const data = await response.json();
@@ -471,7 +458,6 @@ async function editClient(event, clientId) {
         alert('Erro ao atualizar cliente.');
     }
 }
-
 
 
 // Função para excluir um cliente
