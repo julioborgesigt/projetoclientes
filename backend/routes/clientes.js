@@ -2,19 +2,29 @@ const express = require('express');
 const db = require('../db/connection');
 const router = express.Router();
 
-// Rota para adicionar cliente
 router.post('/add', (req, res) => {
-    const { name, vencimento, servico, whatsapp, observacoes } = req.body;
+    const { whatsapp } = req.body;
 
+    // Validação de formato
+    const whatsappRegex = /^\+55\d{11}$/;
+    if (!whatsappRegex.test(whatsapp)) {
+        return res.status(400).json({ error: 'O número de WhatsApp deve estar no formato: +5588999738779.' });
+    }
+
+    // Salvar no banco de dados
     db.query(
         'INSERT INTO clientes (name, vencimento, servico, whatsapp, observacoes) VALUES (?, ?, ?, ?, ?)',
-        [name, vencimento, servico, whatsapp, observacoes],
-        (err, results) => {
-            if (err) return res.status(500).json({ error: 'Erro ao adicionar cliente' });
+        [req.body.name, req.body.vencimento, req.body.servico, whatsapp, req.body.observacoes],
+        (err) => {
+            if (err) {
+                console.error('Erro ao adicionar cliente:', err);
+                return res.status(500).json({ error: 'Erro ao adicionar cliente.' });
+            }
             res.status(201).json({ message: 'Cliente adicionado com sucesso!' });
         }
     );
 });
+
 
 module.exports = router;
 

@@ -441,18 +441,20 @@ function hideEditForm(clientId) {
 async function editClient(event, clientId) {
     event.preventDefault(); // Impede o envio do formulário padrão
 
-    // Obtém os valores dos campos de edição
-    const name = document.getElementById(`edit-name-${clientId}`).value;
-    const vencimento = document.getElementById(`edit-vencimento-${clientId}`).value;
-    const servico = document.getElementById(`edit-servico-${clientId}`).value;
     const whatsapp = document.getElementById(`edit-whatsapp-${clientId}`).value;
-    const observacoes = document.getElementById(`edit-observacoes-${clientId}`).value;
+
+    // Validação no frontend
+    const whatsappRegex = /^\+55\d{11}$/;
+    if (!whatsappRegex.test(whatsapp)) {
+        alert('O número de WhatsApp deve estar no formato: +5588999738779.');
+        return;
+    }
 
     try {
         const response = await fetch(`/clientes/update/${clientId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, vencimento, servico, whatsapp, observacoes }),
+            body: JSON.stringify({ whatsapp }),
         });
 
         const data = await response.json();
@@ -469,6 +471,7 @@ async function editClient(event, clientId) {
         alert('Erro ao atualizar cliente.');
     }
 }
+
 
 
 // Função para excluir um cliente
