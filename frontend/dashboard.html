@@ -46,9 +46,16 @@
         </form>
 
 
-        <h2>Mensagem Padrão para WhatsApp:</h2>
-        <textarea id="default-message" placeholder="Digite a mensagem padrão"></textarea>
-        <button id="save-message">Salvar Mensagem</button>
+        <!-- Botão para Mostrar o Campo de Mensagem Padrão -->
+        <button id="show-message-btn" onclick="toggleMessageForm()">Conf. mensagem</button>
+
+        <!-- Campo de Mensagem Padrão (Oculto por padrão) -->
+        <div id="message-form" style="display: none;">
+            <h2>Mensagem Padrão para WhatsApp</h2>
+            <textarea id="default-message" placeholder="Digite a mensagem padrão"></textarea>
+            <button id="save-message">Salvar Mensagem</button>
+        </div>
+
 
         <button id="sort-clients">Ordenar por Vencimento</button>
 

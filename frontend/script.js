@@ -330,6 +330,16 @@ function toggleForm() {
         form.style.display = 'block'; // Se estiver oculto, exibe
     }
 }
+function toggleMessageForm() {
+    const messageForm = document.getElementById('message-form');
+    const isFormVisible = messageForm.style.display === 'block'; // Verifica se o campo está visível
+
+    if (isFormVisible) {
+        messageForm.style.display = 'none'; // Se estiver visível, oculta
+    } else {
+        messageForm.style.display = 'block'; // Se estiver oculto, exibe
+    }
+}
 
 
 async function markAsInDay(id) {
