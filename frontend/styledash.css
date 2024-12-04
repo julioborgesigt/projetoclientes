@@ -654,7 +654,7 @@ button.toggle-options:hover {
 #show-message-btn {
     width: 100%; /* Faz o botão ocupar toda a largura disponível */
     padding: 10px 0; /* Ajusta o padding para dar uma boa altura ao botão */
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -664,7 +664,7 @@ button.toggle-options:hover {
 }
 
 #show-message-btn:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 #message-form {
