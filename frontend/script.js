@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientItem.classList.add('client-item');
     
             // Formata a data de vencimento
-            const formattedDate = client.vencimento;
+            const formattedDate = client.vencimento.split('-').reverse().join('-');
     
             // Define uma classe CSS com base no status
             const statusClass = client.status === 'pendente' ? 'status-pendente' :
