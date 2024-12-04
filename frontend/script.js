@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('O número de WhatsApp deve conter exatamente 11 dígitos após o +55.');
         return;
         }
-        
+
         const client = { name, vencimento, servico, whatsapp, observacoes };
 
         try {
@@ -217,7 +217,7 @@ async function checkAlerts() {
             alert(`Existem ${data.length} clientes com vencimento próximo!`);
         }
     } catch (error) {
-        console.error('Erro ao buscar alertas:', error);
+        alert('Erro ao buscar alertas:', error);
     }
 }
 
