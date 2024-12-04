@@ -128,6 +128,27 @@ router.get('/get-message', (req, res) => {
 });
 
 
+// Rota para buscar a data de vencimento de um cliente pelo ID
+router.get('/get-vencimento/:id', (req, res) => {
+    const clientId = req.params.id; // Obtém o ID do cliente
+
+    // Consulta ao banco de dados para obter o vencimento do cliente
+    db.query('SELECT vencimento FROM clientes WHERE id = ?', [clientId], (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar data de vencimento:', err);
+            return res.status(500).json({ error: 'Erro ao buscar data de vencimento.' });
+        }
+
+        // Verifica se encontrou o cliente
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Cliente não encontrado.' });
+        }
+
+        // Retorna a data de vencimento
+        res.status(200).json({ vencimento: results[0].vencimento });
+    });
+});
+
 
 router.put('/adjust-date/:id', (req, res) => {
     const { id } = req.params;
