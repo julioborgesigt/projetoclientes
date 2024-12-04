@@ -49,6 +49,22 @@ document.addEventListener('DOMContentLoaded', function () {
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                          <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
                     </div>
+                    <div class="button-row">
+                    <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                    </div>
+                    <!-- Formulário de edição oculto -->
+                    <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
+                        <form onsubmit="editClient(event, ${client.id})">
+                            <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
+                            <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
+                            <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
+                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
+                            <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
+                            <button type="submit">Salvar</button>
+                            <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
+                        </form>
+                    </div>
+
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
             `;
@@ -289,36 +305,52 @@ function displayClients(clients) {
 
         // Cria os botões de ação
         clientItem.innerHTML = `
-            <div class="client-info">
-                <p><strong>Nome:</strong> <span>${client.name}</span></p>
-                <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
-                <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
-                <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
-                <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
-                <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
-            </div>
-            <div class="client-actions">
-                <!-- Primeira fileira: Status -->
-                <div class="button-row">
-                    <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
-                    <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                    <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                <div class="client-info">
+                    <p><strong>Nome:</strong> <span>${client.name}</span></p>
+                    <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
+                    <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
+                    <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
+                    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
                 </div>
-                <!-- Segunda fileira: Ajustes de Data -->
-                <div class="button-row">
-                    <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
-                    <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
-                    <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
-                    <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                <div class="client-actions">
+                    <!-- Primeira fileira: Status -->
+                    <div class="button-row">
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
+                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                    </div>
+                    <!-- Segunda fileira: Ajustes de Data -->
+                    <div class="button-row">
+                        <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                        <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
+                        <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                        <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                    </div>
+                    <!-- Terceira fileira: Excluir e WhatsApp -->
+                    <div class="button-row">
+                        <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
+                    </div>
+                    <div class="button-row">
+                    <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                    </div>
+                    <!-- Formulário de edição oculto -->
+                    <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
+                        <form onsubmit="editClient(event, ${client.id})">
+                            <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
+                            <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
+                            <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
+                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
+                            <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
+                            <button type="submit">Salvar</button>
+                            <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
+                        </form>
+                    </div>
+
                 </div>
-                <!-- Terceira fileira: Excluir e WhatsApp -->
-                <div class="button-row">
-                    <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                    <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
-                </div>
-            </div>
-            <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
-        `;
+                <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+            `;
         clientsList.appendChild(clientItem);
     });
 }
