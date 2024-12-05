@@ -245,18 +245,18 @@ function displayClients(clients) {
 
     clients.forEach(client => {
         const clientItem = document.createElement('div');
-        clientItem.classList.add('client-item');
-
-        // Formata a data de vencimento
-        const formattedDate = new Date(client.vencimento).toLocaleDateString('pt-BR');
-
-        // Define uma classe CSS com base no status
-        const statusClass = client.status === 'pendente' ? 'status-pendente' :
-                            client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                            client.status === 'em dias' ? 'status-em-dias' : '';
-
-        // Cria os botões de ação
-        clientItem.innerHTML = `
+            clientItem.classList.add('client-item');
+    
+            // Formata a data de vencimento
+            const formattedDate = client.vencimento.split('-').reverse().join('-');
+    
+            // Define uma classe CSS com base no status
+            const statusClass = client.status === 'pendente' ? 'status-pendente' :
+                                client.status === 'cobrança feita' ? 'status-cobrança-feita' :
+                                client.status === 'em dias' ? 'status-em-dias' : '';
+    
+            // Cria os botões de ação
+            clientItem.innerHTML = `
                 <div class="client-info">
                     <p><strong>Nome:</strong> <span>${client.name}</span></p>
                     <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
@@ -268,9 +268,9 @@ function displayClients(clients) {
                 <div class="client-actions">
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
-                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. Pendente</button>
-                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança Feita</button>
-                        <button class="em-dias" onclick="markAsInDay(${client.id})">Em Dias</button>
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
+                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
                     </div>
                     <!-- Segunda fileira: Ajustes de Data -->
                     <div class="button-row">
@@ -282,10 +282,11 @@ function displayClients(clients) {
                     <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
                          <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
                     </div>
                     <div class="button-row">
-                    <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                   
                     </div>
                     <!-- Formulário de edição oculto -->
                     <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
@@ -303,7 +304,7 @@ function displayClients(clients) {
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
             `;
-        clientsList.appendChild(clientItem);
+            clientsList.appendChild(clientItem);
     });
 }
 
