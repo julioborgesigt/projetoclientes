@@ -774,7 +774,7 @@ button.toggle-options:hover {
     display: flex;
     justify-content: center;
     align-items: center; /* Centraliza o texto no botão */
-    margin-top: -5px; /* Move o botão para cima */
+   
 }
 
 .expand-btn:hover {
