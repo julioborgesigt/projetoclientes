@@ -511,7 +511,7 @@ button.toggle-options:hover {
         font-weight: bold;
         border-radius: 5px;
         margin-bottom: 10px;
-        width: 150px;
+        width: 180px;
     }
     
     /* Status Pendente */
@@ -529,7 +529,14 @@ button.toggle-options:hover {
         border: 1px solid #ff8c00;
     
     }
-    
+
+    /* Status Em Dias */
+    .status-em-dias {
+    background-color: #b3e4bf; /* Verde claro */
+    color: #3ac45a; /* Verde mais escuro */
+    border: 1px solid #3ac45a;
+
+}
     
     .button-row {
        /* flex-direction: column;  Botões em pilha no celular */
