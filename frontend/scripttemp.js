@@ -16,61 +16,45 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedDate = client.vencimento.split('-').reverse().join('-');
     
             // Define uma classe CSS com base no status
-            const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
+            const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                                client.status === 'Pag. em dias' ? 'status-em-dias' : '';
+                                client.status === 'em dias' ? 'status-em-dias' : '';
     
-            // Cria o HTML inicial com nome, status e botão de expansão
+            // Cria os botões de ação
             clientItem.innerHTML = `
-                <div class="client-summary">
-                    <div class="client-name"><strong>Nome:</strong> ${client.name}</div>
-                    <div class="client-status-expand">
-                        <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                        <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
-                    </div>
+                <div class="client-info">
+                    <p><strong>Nome:</strong> <span>${client.name}</span></p>
+                    <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
+                    <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
+                    <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
+                    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
                 </div>
-                <div class="client-details" style="display: none;">
-                    <table class="client-table">
-                        <tr>
-                            <td><strong>Vencimento:</strong></td>
-                            <td>${formattedDate}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Serviço:</strong></td>
-                            <td>${client.servico}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>WhatsApp:</strong></td>
-                            <td><a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Observações:</strong></td>
-                            <td>${client.observacoes}</td>
-                        </tr>
-                    </table>
-                    <div class="client-actions" style="display: none;">
-                        <!-- Botões de ação -->
-                        <!-- Primeira fileira: Status -->
-                        <div class="button-row">
-                            <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
-                            <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
-                            <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
-                        </div>
-                        <!-- Segunda fileira: Ajustes de Data -->
-                        <div class="button-row">
-                            <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
-                            <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
-                            <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
-                            <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
-                        </div>
-                        <!-- Terceira fileira: Excluir, Editar e WhatsApp -->
-                        <div class="button-row">
-                            <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                            <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
-                            <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
-                        </div>
-                        <!-- Formulário de edição oculto -->
-                        <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
+                <div class="client-actions">
+                    <!-- Primeira fileira: Status -->
+                    <div class="button-row">
+                        <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
+                        <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
+                        <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
+                    </div>
+                    <!-- Segunda fileira: Ajustes de Data -->
+                    <div class="button-row">
+                        <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
+                        <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
+                        <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
+                        <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
+                    </div>
+                    <!-- Terceira fileira: Excluir e WhatsApp -->
+                    <div class="button-row">
+                        <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
+                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
+                    </div>
+                    <div class="button-row">
+                   
+                    </div>
+                    <!-- Formulário de edição oculto -->
+                    <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
                         <form onsubmit="editClient(event, ${client.id})">
                             <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
                             <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
@@ -80,19 +64,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             <button type="submit">Salvar</button>
                             <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
                         </form>
-                        </div>
                     </div>
-                    <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
+
                 </div>
+                <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
             `;
             clientsList.appendChild(clientItem);
         });
     }
-    
-    
-    
-    
-    
     
 
        
@@ -266,46 +245,27 @@ function displayClients(clients) {
 
     clients.forEach(client => {
         const clientItem = document.createElement('div');
-        clientItem.classList.add('client-item');
-
-        // Formata a data de vencimento
-        const formattedDate = client.vencimento.split('-').reverse().join('-');
-
-        // Define uma classe CSS com base no status
-        const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
-                            client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                            client.status === 'Pag. em dias' ? 'status-em-dias' : '';
-
-        // Cria o HTML inicial com nome, status e botão de expansão
-        clientItem.innerHTML = `
-            <div class="client-summary">
-                <div class="client-name"><strong>Nome:</strong> ${client.name}</div>
-                <div class="client-status-expand">
-                    <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+            clientItem.classList.add('client-item');
+    
+            // Formata a data de vencimento
+            const formattedDate = client.vencimento.split('-').reverse().join('-');
+    
+            // Define uma classe CSS com base no status
+            const statusClass = client.status === 'pendente' ? 'status-pendente' :
+                                client.status === 'cobrança feita' ? 'status-cobrança-feita' :
+                                client.status === 'em dias' ? 'status-em-dias' : '';
+    
+            // Cria os botões de ação
+            clientItem.innerHTML = `
+                <div class="client-info">
+                    <p><strong>Nome:</strong> <span>${client.name}</span></p>
+                    <p><strong>Vencimento:</strong> <span>${formattedDate}</span></p>
+                    <p><strong>Serviço:</strong> <span>${client.servico}</span></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
+                    <p><strong>Observações:</strong> <span>${client.observacoes}</span></p>
+                    <p class="status ${statusClass}" style="width: 100%; text-align: center;"><strong>Status:</strong> ${client.status || 'N/A'}</p>
                 </div>
-            </div>
-            <div class="client-details" style="display: none;">
-                <table class="client-table">
-                    <tr>
-                        <td><strong>Vencimento:</strong></td>
-                        <td>${formattedDate}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Serviço:</strong></td>
-                        <td>${client.servico}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>WhatsApp:</strong></td>
-                        <td><a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Observações:</strong></td>
-                        <td>${client.observacoes}</td>
-                    </tr>
-                </table>
-                <div class="client-actions" style="display: none;">
-                    <!-- Botões de ação -->
+                <div class="client-actions">
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
                         <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
@@ -319,11 +279,14 @@ function displayClients(clients) {
                         <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                         <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
                     </div>
-                    <!-- Terceira fileira: Excluir, Editar e WhatsApp -->
+                    <!-- Terceira fileira: Excluir e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
-                        <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
-                        <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
+                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
+                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
+                    </div>
+                    <div class="button-row">
+                   
                     </div>
                     <!-- Formulário de edição oculto -->
                     <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
@@ -337,56 +300,26 @@ function displayClients(clients) {
                             <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
                         </form>
                     </div>
+
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
-            </div>
-        `;
-        clientsList.appendChild(clientItem);
+            `;
+            clientsList.appendChild(clientItem);
     });
 }
 
 
 
-
-
-
-function toggleClientDetails(button) {
-    // Tenta selecionar o bloco de detalhes do cliente com base na estrutura HTML
-    const details = button.closest('.client-summary').nextElementSibling;
-
-    if (!details) {
-        console.error('Bloco de detalhes não encontrado para este botão.');
-        return;
-    }
-
-    const isVisible = details.style.display === 'block';
-
-    if (isVisible) {
-        details.style.display = 'none'; // Oculta os detalhes
-        button.innerHTML = '+'; // Ícone de expansão
-    } else {
-        details.style.display = 'block'; // Exibe os detalhes
-        button.innerHTML = '-'; // Ícone de colapso
-    }
-}
-
-
-
-
-
 function toggleOptions(button) {
-    const actions = button.previousElementSibling; // Seleciona o bloco de ações do cliente
-    const isVisible = actions.style.display === 'block';
-
-    if (isVisible) {
-        actions.style.display = 'none'; // Oculta as opções
-        button.innerText = 'Mostrar opções'; // Altera o texto do botão
+    const actions = button.previousElementSibling; // Seleciona o elemento de ações
+    if (actions.style.display === 'none' || actions.style.display === '') {
+        actions.style.display = 'flex'; // Mostra as opções
+        button.textContent = 'Ocultar opções'; // Altera o texto do botão
     } else {
-        actions.style.display = 'block'; // Exibe as opções
-        button.innerText = 'Ocultar opções'; // Altera o texto do botão
+        actions.style.display = 'none'; // Oculta as opções
+        button.textContent = 'Mostrar opções'; // Altera o texto do botão
     }
 }
-
 
 function toggleForm() {
     const form = document.getElementById('add-client-form');
