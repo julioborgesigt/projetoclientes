@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedDate = client.vencimento.split('-').reverse().join('-');
     
             // Define uma classe CSS com base no status
-            const statusClass = client.status === 'pendente' ? 'status-pendente' :
+            const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                                client.status === 'em dias' ? 'status-em-dias' : '';
+                                client.status === 'Pag. em dias' ? 'status-em-dias' : '';
     
             // Cria o HTML inicial com nome, status e botão de expansão
             clientItem.innerHTML = `
@@ -260,9 +260,9 @@ function displayClients(clients) {
         const formattedDate = client.vencimento.split('-').reverse().join('-');
 
         // Define uma classe CSS com base no status
-        const statusClass = client.status === 'pendente' ? 'status-pendente' :
+        const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                            client.status === 'em dias' ? 'status-em-dias' : '';
+                            client.status === 'Pag. em dias' ? 'status-em-dias' : '';
 
         // Cria o HTML inicial com nome, status e botão de expansão
         clientItem.innerHTML = `
