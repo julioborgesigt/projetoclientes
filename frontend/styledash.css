@@ -507,7 +507,7 @@ button.toggle-options:hover {
     background-color: #ffcccc;
     color: #d00000;
     border: 1px solid #d00000;
-    width:50%;
+   
 }
 
 /* Status Cobrança Feita */
@@ -515,7 +515,7 @@ button.toggle-options:hover {
     background-color: #ffe4b5;
     color: #ff8c00;
     border: 1px solid #ff8c00;
-    width:50%;
+
 }
 
 /* Status Em Dias */
@@ -523,7 +523,7 @@ button.toggle-options:hover {
     background-color: #b3e4bf; /* Verde claro */
     color: #3ac45a; /* Verde mais escuro */
     border: 1px solid #3ac45a;
-    width:50%;
+
 }
 
 /* Responsividade */
