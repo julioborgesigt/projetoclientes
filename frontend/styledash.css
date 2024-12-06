@@ -734,9 +734,9 @@ button.toggle-options:hover {
 .client-summary {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Garante alinhamento vertical */
     padding: 10px;
-    flex-wrap: wrap; /* Permite quebrar linha em dispositivos móveis */
+    flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
 }
 
 .client-name {
@@ -749,7 +749,7 @@ button.toggle-options:hover {
 .client-status-expand {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o status e o botão */
+    gap: 10px; /* Espaçamento entre o status e o botão */
 }
 
 .status {
@@ -766,17 +766,19 @@ button.toggle-options:hover {
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    padding: 5px 10px;
+    font-size: 14px; /* Reduzido para harmonizar com o texto */
+    padding: 5px; /* Mantém o botão compacto */
+    width: 32px; /* Tamanho fixo em largura */
+    height: 32px; /* Tamanho fixo em altura */
+    text-align: center; /* Centraliza o texto */
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza o ícone no botão */
 }
 
 .expand-btn:hover {
     background-color: #0056b3;
-}
-
-.client-summary .expand-btn::after {
-    content: attr(data-icon);
 }
 
 /* Ajuste para dispositivos móveis */
@@ -791,3 +793,4 @@ button.toggle-options:hover {
         width: 100%; /* Garante alinhamento correto */
     }
 }
+
