@@ -503,40 +503,7 @@ button.toggle-options:hover {
 /* Responsividade */
 @media (max-width: 768px) {
 
-    .status {
-        display: block;
-        background-color: #f0f0f0; /* Fundo cinza claro */
-        padding: 10px;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        width: 180px;
-    }
-    
-    /* Status Pendente */
-    .status-pendente {
-        background-color: #ffcccc;
-        color: #d00000;
-        border: 1px solid #d00000;
-       
-    }
-    
-    /* Status Cobrança Feita */
-    .status-cobrança-feita {
-        background-color: #ffe4b5;
-        color: #ff8c00;
-        border: 1px solid #ff8c00;
-    
-    }
 
-    /* Status Em Dias */
-    .status-em-dias {
-    background-color: #b3e4bf; /* Verde claro */
-    color: #3ac45a; /* Verde mais escuro */
-    border: 1px solid #3ac45a;
-
-}
     
     .button-row {
        /* flex-direction: column;  Botões em pilha no celular */
