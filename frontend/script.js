@@ -23,9 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
             // Cria o HTML inicial com nome, status e botão de expansão
             clientItem.innerHTML = `
                 <div class="client-summary">
-                    <span><strong>Nome:</strong> ${client.name}</span>
-                    <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                    <button class="expand-btn" onclick="toggleClientDetails(this)">⯆</button>
+                    <div class="client-name"><strong>Nome:</strong> ${client.name}</div>
+                    <div class="client-status-expand">
+                        <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
+                        <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+                    </div>
                 </div>
                 <div class="client-details" style="display: none;">
                     <table class="client-table">
@@ -47,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </tr>
                     </table>
                     <div class="client-actions" style="display: none;">
+                        <!-- Botões de ação -->
                         <!-- Primeira fileira: Status -->
                         <div class="button-row">
                             <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -263,9 +267,11 @@ function displayClients(clients) {
         // Cria o HTML inicial com nome, status e botão de expansão
         clientItem.innerHTML = `
             <div class="client-summary">
-                <span><strong>Nome:</strong> ${client.name}</span>
-                <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                <button class="expand-btn" onclick="toggleClientDetails(this)">⯆</button>
+                <div class="client-name"><strong>Nome:</strong> ${client.name}</div>
+                <div class="client-status-expand">
+                    <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
+                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+                </div>
             </div>
             <div class="client-details" style="display: none;">
                 <table class="client-table">
@@ -287,6 +293,7 @@ function displayClients(clients) {
                     </tr>
                 </table>
                 <div class="client-actions" style="display: none;">
+                    <!-- Botões de ação -->
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
                         <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
@@ -318,18 +325,20 @@ function displayClients(clients) {
 
 
 
+
 function toggleClientDetails(button) {
     const details = button.parentElement.nextElementSibling; // Seleciona o bloco de detalhes do cliente
     const isVisible = details.style.display === 'block';
 
     if (isVisible) {
         details.style.display = 'none'; // Oculta os detalhes
-        button.innerHTML = '⯆'; // Ícone de expansão
+        button.innerHTML = '+'; // Ícone de expansão
     } else {
         details.style.display = 'block'; // Exibe os detalhes
-        button.innerHTML = '⯅'; // Ícone de colapso
+        button.innerHTML = '-'; // Ícone de colapso
     }
 }
+
 
 
 
