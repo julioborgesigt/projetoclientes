@@ -28,10 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     <button class="expand-btn" onclick="toggleClientDetails(this)">⯆</button>
                 </div>
                 <div class="client-details" style="display: none;">
-                    <p><strong>Vencimento:</strong> ${formattedDate}</p>
-                    <p><strong>Serviço:</strong> ${client.servico}</p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
-                    <p><strong>Observações:</strong> ${client.observacoes}</p>
+                    <table class="client-table">
+                        <tr>
+                            <td><strong>Vencimento:</strong></td>
+                            <td>${formattedDate}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Serviço:</strong></td>
+                            <td>${client.servico}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WhatsApp:</strong></td>
+                            <td><a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Observações:</strong></td>
+                            <td>${client.observacoes}</td>
+                        </tr>
+                    </table>
                     <div class="client-actions" style="display: none;">
                         <!-- Primeira fileira: Status -->
                         <div class="button-row">
@@ -59,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -253,10 +268,24 @@ function displayClients(clients) {
                 <button class="expand-btn" onclick="toggleClientDetails(this)">⯆</button>
             </div>
             <div class="client-details" style="display: none;">
-                <p><strong>Vencimento:</strong> ${formattedDate}</p>
-                <p><strong>Serviço:</strong> ${client.servico}</p>
-                <p><strong>WhatsApp:</strong> <a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></p>
-                <p><strong>Observações:</strong> ${client.observacoes}</p>
+                <table class="client-table">
+                    <tr>
+                        <td><strong>Vencimento:</strong></td>
+                        <td>${formattedDate}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Serviço:</strong></td>
+                        <td>${client.servico}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WhatsApp:</strong></td>
+                        <td><a href="https://wa.me/${client.whatsapp}" target="_blank">${client.whatsapp}</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Observações:</strong></td>
+                        <td>${client.observacoes}</td>
+                    </tr>
+                </table>
                 <div class="client-actions" style="display: none;">
                     <!-- Primeira fileira: Status -->
                     <div class="button-row">
@@ -284,6 +313,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
+
 
 
 
