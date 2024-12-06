@@ -327,7 +327,14 @@ function displayClients(clients) {
 
 
 function toggleClientDetails(button) {
-    const details = button.parentElement.nextElementSibling; // Seleciona o bloco de detalhes do cliente
+    // Tenta selecionar o bloco de detalhes do cliente com base na estrutura HTML
+    const details = button.closest('.client-summary').nextElementSibling;
+
+    if (!details) {
+        console.error('Bloco de detalhes não encontrado para este botão.');
+        return;
+    }
+
     const isVisible = details.style.display === 'block';
 
     if (isVisible) {
@@ -338,6 +345,7 @@ function toggleClientDetails(button) {
         button.innerHTML = '-'; // Ícone de colapso
     }
 }
+
 
 
 
