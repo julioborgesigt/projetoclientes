@@ -471,7 +471,7 @@ button.toggle-options:hover {
     font-size: 14px;
     color: white;
     text-align: center;
-    width: 50%; /* Define uma largura fixa para garantir o mesmo tamanho */
+    width: 150px; /* Define uma largura fixa para garantir o mesmo tamanho */
     display: inline-block; /* Garante alinhamento consistente */
 }
 
@@ -501,6 +501,17 @@ button.toggle-options:hover {
 
 /* Responsividade */
 @media (max-width: 768px) {
+    .status {
+        display: block;
+        background-color: #f0f0f0; /* Fundo cinza claro */
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
     .button-row {
        /* flex-direction: column;  Botões em pilha no celular */
        gap: 2px; /* Espaçamento consistente entre os botões */
