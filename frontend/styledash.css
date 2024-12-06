@@ -750,6 +750,7 @@ button.toggle-options:hover {
     display: flex;
     align-items: center;
     gap: 10px; /* Espaçamento entre o status e o botão */
+    position: relative; /* Garante que ajustes verticais funcionem */
 }
 
 .status {
@@ -766,15 +767,16 @@ button.toggle-options:hover {
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 14px; /* Reduzido para harmonizar com o texto */
-    padding: 5px; /* Mantém o botão compacto */
-    width: 32px; /* Tamanho fixo em largura */
-    height: 32px; /* Tamanho fixo em altura */
-    text-align: center; /* Centraliza o texto */
+    font-size: 14px; /* Ajusta o tamanho do texto */
+    padding: 5px; /* Deixa o botão compacto */
+    width: 32px; /* Define largura fixa */
+    height: 32px; /* Define altura fixa */
+    text-align: center; /* Centraliza o conteúdo */
     cursor: pointer;
     display: flex;
     justify-content: center;
-    align-items: center; /* Centraliza o ícone no botão */
+    align-items: center; /* Centraliza o texto no botão */
+    margin-top: -5px; /* Move o botão para cima */
 }
 
 .expand-btn:hover {
