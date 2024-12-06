@@ -465,14 +465,12 @@ button.toggle-options:hover {
 .status {
     display: block;
     background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 5px 10px;
-    border-radius: 3px;
-    text-transform: capitalize;
-    font-size: 14px;
-    color: white;
+    padding: 10px;
     text-align: center;
-    width: 150px; /* Define uma largura fixa para garantir o mesmo tamanho */
-    display: inline-block; /* Garante alinhamento consistente */
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 150px;
 }
 
 /* Status Pendente */
@@ -501,17 +499,7 @@ button.toggle-options:hover {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .status {
-        display: block;
-        background-color: #f0f0f0; /* Fundo cinza claro */
-        padding: 10px;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
+    
     .button-row {
        /* flex-direction: column;  Botões em pilha no celular */
        gap: 2px; /* Espaçamento consistente entre os botões */
