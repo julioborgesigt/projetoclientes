@@ -471,7 +471,7 @@ button.toggle-options:hover {
     font-size: 14px;
     color: white;
     text-align: center;
-    width: 120px; /* Define uma largura fixa para garantir o mesmo tamanho */
+    width: 50%; /* Define uma largura fixa para garantir o mesmo tamanho */
     display: inline-block; /* Garante alinhamento consistente */
 }
 
