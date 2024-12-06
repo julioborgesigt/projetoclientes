@@ -166,31 +166,7 @@ button.toggle-options:hover {
     background-color: #0056b3;
 }
 
-/* Status do Cliente */
-.status {
-    display: block;
-    background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-}
 
-/* Status Pendente (vermelho) */
-.status-pendente {
-    background-color: #ffcccc;
-    color: #d00000;
-    border: 1px solid #d00000;
-}
-
-/* Status Cobrança Feita (laranja) */
-.status-cobrança-feita {
-    background-color: #ffe4b5;
-    color: #ff8c00;
-    border: 1px solid #ff8c00;
-}
 
 
 /* Caixa de Texto da Mensagem Padrão */
@@ -246,12 +222,7 @@ button.em-dias:hover {
     background-color: #155724; /* Verde ainda mais escuro */
 }
 
-/* Status Em Dias */
-.status-em-dias {
-    background-color: #d4edda; /* Verde claro */
-    color: #155724; /* Verde escuro */
-    border: 1px solid #c3e6cb;
-}
+
 
 /* Estilo do Formulário Moderno */
 #add-client-form {
@@ -754,14 +725,6 @@ button.toggle-options:hover {
     align-items: center;
     gap: 10px; /* Espaçamento entre o status e o botão */
     position: relative; /* Garante que ajustes verticais funcionem */
-}
-
-.status {
-    padding: 5px 10px;
-    border-radius: 3px;
-    text-transform: capitalize;
-    font-size: 14px;
-    color: white;
 }
 
 
