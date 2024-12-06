@@ -465,13 +465,16 @@ button.toggle-options:hover {
 .status {
     display: block;
     background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: white;
     text-align: center;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 150px;
+    width: 150px; /* Define uma largura fixa para garantir o mesmo tamanho */
+    display: inline-block; /* Garante alinhamento consistente */
 }
+
 
 /* Status Pendente */
 .status-pendente {
@@ -499,6 +502,34 @@ button.toggle-options:hover {
 
 /* Responsividade */
 @media (max-width: 768px) {
+
+    .status {
+        display: block;
+        background-color: #f0f0f0; /* Fundo cinza claro */
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 150px;
+    }
+    
+    /* Status Pendente */
+    .status-pendente {
+        background-color: #ffcccc;
+        color: #d00000;
+        border: 1px solid #d00000;
+       
+    }
+    
+    /* Status Cobrança Feita */
+    .status-cobrança-feita {
+        background-color: #ffe4b5;
+        color: #ff8c00;
+        border: 1px solid #ff8c00;
+    
+    }
+    
     
     .button-row {
        /* flex-direction: column;  Botões em pilha no celular */
