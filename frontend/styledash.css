@@ -759,7 +759,7 @@ button.toggle-options:hover {
         flex-direction: column; /* Coloca os elementos em coluna */
         align-items: flex-start;
         flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
-        height: 30px;
+        height: 60px;
     }
 
     .client-status-expand {
