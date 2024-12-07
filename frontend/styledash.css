@@ -717,7 +717,7 @@ button.toggle-options:hover {
     align-items: center; /* Garante alinhamento vertical */
     padding: 5px;
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
-    height: 100px;
+    height: 50px;
 }
 
 .client-name {
