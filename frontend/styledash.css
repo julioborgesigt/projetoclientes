@@ -714,7 +714,7 @@ button.toggle-options:hover {
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
-    height: 40px;
+    height: 30px;
 }
 
 .client-name {
@@ -758,6 +758,8 @@ button.toggle-options:hover {
     .client-summary {
         flex-direction: column; /* Coloca os elementos em coluna */
         align-items: flex-start;
+        flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
+        height: 30px;
     }
 
     .client-status-expand {
