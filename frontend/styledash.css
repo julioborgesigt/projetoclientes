@@ -465,10 +465,10 @@ button.toggle-options:hover {
 .status {
     display: block;
     background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 5px 50px;
+    padding: 5px 5px;
     border-radius: 3px;
     text-transform: capitalize;
-    font-size: 10px;
+    font-size: 14px;
     color: white;
     text-align: center;
     width: 180px; /* Define uma largura fixa para garantir o mesmo tamanho */
