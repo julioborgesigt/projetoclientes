@@ -279,7 +279,7 @@ function displayClients(clients) {
         // Cria o HTML inicial com nome, status e botão de expansão
         clientItem.innerHTML = `
             <div class="client-summary">
-                <div class="client-name"><strong>Nome:</strong> ${client.name}</div>
+                <div class="client-name"><strong></strong> ${client.name} / ${client.vencimento}</div>
                 <div class="client-status-expand">
                     <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
                     <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
