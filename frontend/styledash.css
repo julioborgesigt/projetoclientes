@@ -465,7 +465,7 @@ button.toggle-options:hover {
 .status {
     display: block;
     background-color: #f0f0f0; /* Fundo cinza claro */
-    padding: 5px 5px;
+    padding: 5px 10px;
     border-radius: 3px;
     text-transform: capitalize;
     font-size: 14px;
@@ -709,17 +709,20 @@ button.toggle-options:hover {
 }
 
 
+
+
 .client-summary {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
+    padding: 10px;
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
-    height: 30px;
+    height: 40px;
 }
 
 .client-name {
     flex: 1; /* Ocupa toda a largura em telas menores */
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -758,8 +761,6 @@ button.toggle-options:hover {
     .client-summary {
         flex-direction: column; /* Coloca os elementos em coluna */
         align-items: flex-start;
-        flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
-        height: 60px;
     }
 
     .client-status-expand {
