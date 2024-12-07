@@ -716,13 +716,13 @@ button.toggle-options:hover {
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
     padding: 5px;
-    font-size: 12px;
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
+    height: 100px;
 }
 
 .client-name {
     flex: 1; /* Ocupa toda a largura em telas menores */
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 5px;
 }
