@@ -713,8 +713,6 @@ button.toggle-options:hover {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
-    padding-top: 5px;
-    padding-bottom: 30px;
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
     height: 40px;
 }
