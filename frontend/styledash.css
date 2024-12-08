@@ -751,15 +751,7 @@ button.toggle-options:hover {
         flex-wrap: nowrap; /* Mantém os elementos em linha mesmo em telas pequenas */
     }
 
-    .client-name {
-        flex: 1; /* Permite que o nome ocupe mais espaço */
-        font-size: 16px;
-    }
-
-    .expand-btn {
-        flex-shrink: 0; /* Garante que o botão não encolha */
-        margin-left: 10px; /* Espaçamento entre o botão e o nome */
-    }
+    
 
     .client-status-expand {
         justify-content: space-between;
