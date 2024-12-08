@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Cria o HTML inicial
             clientItem.innerHTML = `
                 <div class="client-summary">
-                    <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
+                    <div class="client-name"><strong></strong> ${client.name} / ${formattedDate}</div>
                     <div class="client-status-expand">
                         <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
                     </div>
@@ -271,7 +271,7 @@ function displayClients(clients) {
         // Cria o HTML inicial
         clientItem.innerHTML = `
             <div class="client-summary">
-                <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
+                <div class="client-name"><strong></strong> ${client.name} / ${formattedDate}</div>
                 <div class="client-status-expand">
                     <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
                 </div>
