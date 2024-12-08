@@ -16,18 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedDate = client.vencimento.split('-').reverse().join('-');
     
             // Define uma classe CSS com base no status
-            const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
+            const statusClass = client.status === 'pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                                client.status === 'Pag. em dias' ? 'status-em-dias' : '';
+                                client.status === 'em dias' ? 'status-em-dias' : '';
     
-            // Cria o HTML inicial com nome, status e botão de expansão
+            // Cria o HTML inicial com nome, cor do status e botão de expansão
             clientItem.innerHTML = `
                 <div class="client-summary">
-                    <div class="client-name"><strong></strong> ${client.name} / ${formattedDate}</div>
-                    <div class="client-status-expand">
-                        <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                        <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
-                    </div>
+                    <span class="client-name"><strong>Nome:</strong> ${client.name}</span>
+                    <span class="status-indicator ${statusClass}"></span>
+                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
                 </div>
                 <div class="client-details" style="display: none;">
                     <table class="client-table">
@@ -69,18 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
                             <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
                         </div>
-                        <!-- Formulário de edição oculto -->
-                        <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
-                        <form onsubmit="editClient(event, ${client.id})">
-                            <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
-                            <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
-                            <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
-                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
-                            <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
-                            <button type="submit">Salvar</button>
-                            <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
-                        </form>
-                        </div>
                     </div>
                     <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
                 </div>
@@ -88,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -272,18 +259,16 @@ function displayClients(clients) {
         const formattedDate = client.vencimento.split('-').reverse().join('-');
 
         // Define uma classe CSS com base no status
-        const statusClass = client.status === 'Pag. cobrado' ? 'status-pendente' :
+        const statusClass = client.status === 'pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                            client.status === 'Pag. em dias' ? 'status-em-dias' : '';
+                            client.status === 'em dias' ? 'status-em-dias' : '';
 
-        // Cria o HTML inicial com nome, status e botão de expansão
+        // Cria o HTML inicial com nome, cor do status e botão de expansão
         clientItem.innerHTML = `
             <div class="client-summary">
-                <div class="client-name"><strong></strong> ${client.name}/ ${formattedDate}</div>
-                <div class="client-status-expand">
-                    <span class="status ${statusClass}"><strong>Status:</strong> ${client.status || 'N/A'}</span>
-                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
-                </div>
+                <span class="client-name"><strong>Nome:</strong> ${client.name}</span>
+                <span class="status-indicator ${statusClass}"></span>
+                <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
             </div>
             <div class="client-details" style="display: none;">
                 <table class="client-table">
@@ -325,18 +310,6 @@ function displayClients(clients) {
                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
                         <button class="whatsapp" onclick="sendWhatsAppMessage('${client.whatsapp}', '${client.id}')">WhatsApp</button>
                     </div>
-                    <!-- Formulário de edição oculto -->
-                    <div class="edit-form" id="edit-form-${client.id}" style="display: none;">
-                        <form onsubmit="editClient(event, ${client.id})">
-                            <input type="text" id="edit-name-${client.id}" value="${client.name}" placeholder="Nome">
-                            <input type="date" id="edit-vencimento-${client.id}" value="${client.vencimento}" placeholder="Vencimento">
-                            <input type="text" id="edit-servico-${client.id}" value="${client.servico}" placeholder="Serviço">
-                            <input type="text" id="edit-whatsapp-${client.id}" value="${client.whatsapp}" placeholder="WhatsApp">
-                            <textarea id="edit-observacoes-${client.id}" placeholder="Observações">${client.observacoes}</textarea>
-                            <button type="submit">Salvar</button>
-                            <button type="button" onclick="hideEditForm(${client.id})">Cancelar</button>
-                        </form>
-                    </div>
                 </div>
                 <button class="toggle-options" onclick="toggleOptions(this)" style="width: 100%;">Mostrar opções</button>
             </div>
@@ -344,6 +317,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
+
 
 
 

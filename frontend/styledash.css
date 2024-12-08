@@ -716,7 +716,6 @@ button.toggle-options:hover {
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
     padding: 10px;
-   
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
 }
 
@@ -770,3 +769,23 @@ button.toggle-options:hover {
     }
 }
 
+.status-indicator {
+    display: inline-block;
+    width: 16px; /* Tamanho do círculo */
+    height: 16px; /* Tamanho do círculo */
+    border-radius: 50%; /* Deixa o elemento redondo */
+    margin-left: 10px; /* Espaçamento em relação ao nome */
+    border: 1px solid #ccc; /* Para melhorar a visibilidade */
+}
+
+.status-pendente {
+    background-color: #f44336; /* Vermelho */
+}
+
+.status-cobrança-feita {
+    background-color: #ffa500; /* Laranja */
+}
+
+.status-em-dias {
+    background-color: #4caf50; /* Verde */
+}
