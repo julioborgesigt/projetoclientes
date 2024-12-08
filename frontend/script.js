@@ -16,16 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const formattedDate = client.vencimento.split('-').reverse().join('-');
     
             // Define uma classe CSS com base no status
-            const statusClass = client.status === 'pendente' ? 'status-pendente' :
+            const statusClass = client.status === 'Pag. pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                                client.status === 'em dias' ? 'status-em-dias' : '';
+                                client.status === 'Pag. em dias' ? 'status-em-dias' : '';
     
-            // Cria o HTML inicial com nome, cor do status e botão de expansão
+            // Adiciona a classe de status diretamente no `client-summary`
             clientItem.innerHTML = `
-                <div class="client-summary">
-                    <span class="client-name"><strong>Nome:</strong> ${client.name}</span>
-                    <span class="status-indicator ${statusClass}"></span>
-                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+                <div class="client-summary ${statusClass}">
+                    <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
+                    <div class="client-status-expand">
+                        <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+                    </div>
                 </div>
                 <div class="client-details" style="display: none;">
                     <table class="client-table">
@@ -48,20 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     </table>
                     <div class="client-actions" style="display: none;">
                         <!-- Botões de ação -->
-                        <!-- Primeira fileira: Status -->
                         <div class="button-row">
                             <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
                             <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
                             <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
                         </div>
-                        <!-- Segunda fileira: Ajustes de Data -->
                         <div class="button-row">
                             <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
                             <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
                             <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                             <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
                         </div>
-                        <!-- Terceira fileira: Excluir, Editar e WhatsApp -->
                         <div class="button-row">
                             <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                             <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>
@@ -259,16 +257,17 @@ function displayClients(clients) {
         const formattedDate = client.vencimento.split('-').reverse().join('-');
 
         // Define uma classe CSS com base no status
-        const statusClass = client.status === 'pendente' ? 'status-pendente' :
+        const statusClass = client.status === 'Pag. pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' :
-                            client.status === 'em dias' ? 'status-em-dias' : '';
+                            client.status === 'Pag. em dias' ? 'status-em-dias' : '';
 
-        // Cria o HTML inicial com nome, cor do status e botão de expansão
+        // Adiciona a classe de status diretamente no `client-summary`
         clientItem.innerHTML = `
-            <div class="client-summary">
-                <span class="client-name"><strong>Nome:</strong> ${client.name}</span>
-                <span class="status-indicator ${statusClass}"></span>
-                <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+            <div class="client-summary ${statusClass}">
+                <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
+                <div class="client-status-expand">
+                    <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
+                </div>
             </div>
             <div class="client-details" style="display: none;">
                 <table class="client-table">
@@ -291,20 +290,17 @@ function displayClients(clients) {
                 </table>
                 <div class="client-actions" style="display: none;">
                     <!-- Botões de ação -->
-                    <!-- Primeira fileira: Status -->
                     <div class="button-row">
                         <button class="pendente" onclick="markAsPending(${client.id})">Pag. pendente</button>
                         <button class="cobranca" onclick="markAsPaid(${client.id})">Cobrança feita</button>
                         <button class="em-dias" onclick="markAsInDay(${client.id})">Pag. em dias</button>
                     </div>
-                    <!-- Segunda fileira: Ajustes de Data -->
                     <div class="button-row">
                         <button class="add-30" onclick="adjustDate(${client.id}, 30)">+30 dias</button>
                         <button class="sub-30" onclick="adjustDate(${client.id}, -30)">-30 dias</button>
                         <button class="add-1" onclick="adjustDate(${client.id}, 1)">+1 dia</button>
                         <button class="sub-1" onclick="adjustDate(${client.id}, -1)">-1 dia</button>
                     </div>
-                    <!-- Terceira fileira: Excluir, Editar e WhatsApp -->
                     <div class="button-row">
                         <button class="excluir" onclick="deleteClient(${client.id})">Excluir</button>
                         <button class="editar" onclick="showEditForm(${client.id}, '${client.name}', '${client.vencimento}', '${client.servico}', '${client.whatsapp}', '${client.observacoes}')">Editar</button>

@@ -478,26 +478,23 @@ button.toggle-options:hover {
 
 /* Status Pendente */
 .status-pendente {
-    background-color: #ffcccc;
-    color: #d00000;
+    background-color: #ffcccc; /* Vermelho claro */
+    color: #d00000; /* Vermelho escuro */
     border: 1px solid #d00000;
-   
 }
 
 /* Status Cobrança Feita */
 .status-cobrança-feita {
-    background-color: #ffe4b5;
-    color: #ff8c00;
+    background-color: #ffe4b5; /* Laranja claro */
+    color: #ff8c00; /* Laranja escuro */
     border: 1px solid #ff8c00;
-
 }
 
 /* Status Em Dias */
 .status-em-dias {
     background-color: #b3e4bf; /* Verde claro */
-    color: #3ac45a; /* Verde mais escuro */
+    color: #3ac45a; /* Verde escuro */
     border: 1px solid #3ac45a;
-
 }
 
 /* Responsividade */
@@ -714,9 +711,12 @@ button.toggle-options:hover {
 .client-summary {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Garante alinhamento vertical */
+    align-items: center;
     padding: 10px;
-    flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Permite que o layout se ajuste em dispositivos móveis */
+    transition: background-color 0.3s, border 0.3s; /* Efeito suave na mudança de cor */
 }
 
 .client-name {
@@ -769,23 +769,3 @@ button.toggle-options:hover {
     }
 }
 
-.status-indicator {
-    display: inline-block;
-    width: 16px; /* Tamanho do círculo */
-    height: 16px; /* Tamanho do círculo */
-    border-radius: 50%; /* Deixa o elemento redondo */
-    margin-left: 10px; /* Espaçamento em relação ao nome */
-    border: 1px solid #ccc; /* Para melhorar a visibilidade */
-}
-
-.status-pendente {
-    background-color: #f44336; /* Vermelho */
-}
-
-.status-cobrança-feita {
-    background-color: #ffa500; /* Laranja */
-}
-
-.status-em-dias {
-    background-color: #4caf50; /* Verde */
-}
