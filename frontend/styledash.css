@@ -703,13 +703,10 @@ button.toggle-options:hover {
 
 .client-summary {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Garante que os elementos fiquem espaçados */
+    align-items: center; /* Alinha verticalmente no centro */
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    flex-wrap: wrap; /* Permite que o layout se ajuste em dispositivos móveis */
-    transition: background-color 0.3s, border 0.3s; /* Efeito suave na mudança de cor */
+    flex-wrap: nowrap; /* Impede quebra de linha */
 }
 
 .client-name {
@@ -751,9 +748,17 @@ button.toggle-options:hover {
 /* Ajuste para dispositivos móveis */
 @media (max-width: 768px) {
     .client-summary {
-        flex-direction: column; /* Coloca os elementos em coluna */
-        align-items: flex-start;
-    
+        flex-wrap: nowrap; /* Mantém os elementos em linha mesmo em telas pequenas */
+    }
+
+    .client-name {
+        flex: 1; /* Permite que o nome ocupe mais espaço */
+        font-size: 16px;
+    }
+
+    .expand-btn {
+        flex-shrink: 0; /* Garante que o botão não encolha */
+        margin-left: 10px; /* Espaçamento entre o botão e o nome */
     }
 
     .client-status-expand {
