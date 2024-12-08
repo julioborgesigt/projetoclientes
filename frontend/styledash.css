@@ -716,7 +716,7 @@ button.toggle-options:hover {
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
     padding: 10px;
-    height: 40px;
+   
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
 }
 
@@ -761,7 +761,7 @@ button.toggle-options:hover {
     .client-summary {
         flex-direction: column; /* Coloca os elementos em coluna */
         align-items: flex-start;
-        height: 100px;
+        height: 60px;
     }
 
     .client-status-expand {
