@@ -44,14 +44,6 @@ form button {
     margin-top: 20px;
 }
 
-.client-item {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .client-item:last-child {
     border-bottom: none;
@@ -313,9 +305,10 @@ button.em-dias:hover {
         padding: 12px;
     }
 }
+
 /* Estilo Geral do Item do Cliente */
 .client-item {
-    padding: 15px;
+    padding: 1px;
     border: 1px solid #ddd;
     border-radius: 8px;
     margin-bottom: 10px;
