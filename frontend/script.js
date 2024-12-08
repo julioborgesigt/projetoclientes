@@ -12,18 +12,21 @@ document.addEventListener('DOMContentLoaded', function () {
             const clientItem = document.createElement('div');
             clientItem.classList.add('client-item');
     
-            // Formata a data de vencimento
-            const formattedDate = client.vencimento.split('-').reverse().join('-');
-    
             // Define uma classe CSS com base no status
             const statusClass = client.status === 'Pag. pendente' ? 'status-pendente' :
                                 client.status === 'cobrança feita' ? 'status-cobrança-feita' :
                                 client.status === 'Pag. em dias' ? 'status-em-dias' : '';
     
-            // Adiciona a classe de status diretamente no `client-summary`
+            // Adiciona a classe de status diretamente no `client-item`
+            clientItem.classList.add(statusClass);
+    
+            // Formata a data de vencimento
+            const formattedDate = client.vencimento.split('-').reverse().join('-');
+    
+            // Cria o HTML inicial
             clientItem.innerHTML = `
-                <div class="client-summary ${statusClass}">
-                    <div class="client-name"><strong></strong> ${client.name} / ${formattedDate}</div>
+                <div class="client-summary">
+                    <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
                     <div class="client-status-expand">
                         <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
                     </div>
@@ -72,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
             clientsList.appendChild(clientItem);
         });
     }
+    
     
     
     
@@ -253,18 +257,21 @@ function displayClients(clients) {
         const clientItem = document.createElement('div');
         clientItem.classList.add('client-item');
 
-        // Formata a data de vencimento
-        const formattedDate = client.vencimento.split('-').reverse().join('-');
-
         // Define uma classe CSS com base no status
         const statusClass = client.status === 'Pag. pendente' ? 'status-pendente' :
                             client.status === 'cobrança feita' ? 'status-cobrança-feita' :
                             client.status === 'Pag. em dias' ? 'status-em-dias' : '';
 
-        // Adiciona a classe de status diretamente no `client-summary`
+        // Adiciona a classe de status diretamente no `client-item`
+        clientItem.classList.add(statusClass);
+
+        // Formata a data de vencimento
+        const formattedDate = client.vencimento.split('-').reverse().join('-');
+
+        // Cria o HTML inicial
         clientItem.innerHTML = `
-            <div class="client-summary ${statusClass}">
-                <div class="client-name"><strong></strong> ${client.name} / ${formattedDate}</div>
+            <div class="client-summary">
+                <div class="client-name"><strong>Nome:</strong> ${client.name} / ${formattedDate}</div>
                 <div class="client-status-expand">
                     <button class="expand-btn" onclick="toggleClientDetails(this)">+</button>
                 </div>
@@ -313,6 +320,7 @@ function displayClients(clients) {
         clientsList.appendChild(clientItem);
     });
 }
+
 
 
 

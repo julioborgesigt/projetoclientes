@@ -308,12 +308,11 @@ button.em-dias:hover {
 
 /* Estilo Geral do Item do Cliente */
 .client-item {
-    padding: 1px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: background-color 0.3s, border 0.3s; /* Efeito suave na transição */
+    border: 1px solid #ddd;
 }
 
 /* Informações do Cliente */
@@ -469,25 +468,26 @@ button.toggle-options:hover {
 }
 
 
+
 /* Status Pendente */
 .status-pendente {
     background-color: #ffcccc; /* Vermelho claro */
     color: #d00000; /* Vermelho escuro */
-    border: 1px solid #d00000;
+    border-color: #d00000;
 }
 
 /* Status Cobrança Feita */
 .status-cobrança-feita {
     background-color: #ffe4b5; /* Laranja claro */
     color: #ff8c00; /* Laranja escuro */
-    border: 1px solid #ff8c00;
+    border-color: #ff8c00;
 }
 
 /* Status Em Dias */
 .status-em-dias {
     background-color: #b3e4bf; /* Verde claro */
     color: #3ac45a; /* Verde escuro */
-    border: 1px solid #3ac45a;
+    border-color: #3ac45a;
 }
 
 /* Responsividade */
