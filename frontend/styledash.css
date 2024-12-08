@@ -39,11 +39,20 @@ form button {
     font-size: 16px;
 }
 
+
 /* Lista de Clientes */
 #clients-list {
     margin-top: 20px;
 }
 
+.client-item {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 .client-item:last-child {
     border-bottom: none;
@@ -305,14 +314,14 @@ button.em-dias:hover {
         padding: 12px;
     }
 }
-
 /* Estilo Geral do Item do Cliente */
 .client-item {
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px;
-    transition: background-color 0.3s, border 0.3s; /* Efeito suave na transição */
+    padding: 15px;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Informações do Cliente */
@@ -468,26 +477,28 @@ button.toggle-options:hover {
 }
 
 
-
 /* Status Pendente */
 .status-pendente {
-    background-color: #ffcccc; /* Vermelho claro */
-    color: #d00000; /* Vermelho escuro */
-    border-color: #d00000;
+    background-color: #ffcccc;
+    color: #d00000;
+    border: 1px solid #d00000;
+   
 }
 
 /* Status Cobrança Feita */
 .status-cobrança-feita {
-    background-color: #ffe4b5; /* Laranja claro */
-    color: #ff8c00; /* Laranja escuro */
-    border-color: #ff8c00;
+    background-color: #ffe4b5;
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
+
 }
 
 /* Status Em Dias */
 .status-em-dias {
     background-color: #b3e4bf; /* Verde claro */
-    color: #3ac45a; /* Verde escuro */
-    border-color: #3ac45a;
+    color: #3ac45a; /* Verde mais escuro */
+    border: 1px solid #3ac45a;
+
 }
 
 /* Responsividade */
@@ -703,15 +714,15 @@ button.toggle-options:hover {
 
 .client-summary {
     display: flex;
-    justify-content: space-between; /* Garante que os elementos fiquem espaçados */
-    align-items: center; /* Alinha verticalmente no centro */
+    justify-content: space-between;
+    align-items: center; /* Garante alinhamento vertical */
     padding: 10px;
-    flex-wrap: nowrap; /* Impede quebra de linha */
+    flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
 }
 
 .client-name {
     flex: 1; /* Ocupa toda a largura em telas menores */
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -748,10 +759,9 @@ button.toggle-options:hover {
 /* Ajuste para dispositivos móveis */
 @media (max-width: 768px) {
     .client-summary {
-        flex-wrap: nowrap; /* Mantém os elementos em linha mesmo em telas pequenas */
+        flex-direction: column; /* Coloca os elementos em coluna */
+        align-items: flex-start;
     }
-
-    
 
     .client-status-expand {
         justify-content: space-between;
