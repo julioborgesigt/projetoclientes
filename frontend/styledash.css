@@ -761,7 +761,7 @@ button.toggle-options:hover {
     .client-summary {
         flex-direction: column; /* Coloca os elementos em coluna */
         align-items: flex-start;
-        height: 70px;
+    
     }
 
     .client-status-expand {
