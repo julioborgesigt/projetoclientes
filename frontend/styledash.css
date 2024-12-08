@@ -716,6 +716,7 @@ button.toggle-options:hover {
     justify-content: space-between;
     align-items: center; /* Garante alinhamento vertical */
     padding: 10px;
+    height: 40px;
     flex-wrap: wrap; /* Permite quebrar linha em dispositivos menores */
 }
 
